@@ -1,6 +1,4 @@
 Felipe Farias CV
 ----
 
-page1:
-
-![page1](img/page-1.jpg)
+![cv-page1](https://github.com/FelipeFa6/my-cv/blob/master/img/page-1.png?raw=true)
