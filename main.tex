@@ -1,10 +1,3 @@
-%-------------------------
-% Resume in Latex
-% Author : Jake Gutierrez
-% Based off of: https://github.com/sb2nov/resume
-% License : MIT
-%------------------------
-
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
@@ -99,117 +92,98 @@
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+% ---------
+% doc start
+% ---------
 \begin{document}
-
 \begin{center}
-    \textbf{\Huge \scshape Felipe Farías } \\ \vspace{2pt}
-    \small +56 9 6374 5345 $|$ \href{mailto:felipe.farias.e1@gmail.com}{\underline{felipe.farias.e1@gmail.com}} $|$ 
-    \href{https://www.linkedin.com/in/felipefa6/}{\underline{linkedin.com/in/felipefa6}} $|$
-    \href{https://github.com/FelipeFa6}{\underline{github.com/FelipeFa6}}
+	\textbf{\Huge \scshape Felipe Farías } \\ \vspace{2pt}
+	\small +56 9 6374 5345 $|$ \href{mailto:felipe.farias.e1@gmail.com}{\underline{Felipe.Farias.e1@gmail.com}} $|$ 
+	\href{https://www.linkedin.com/in/felipefa6/}{\underline{Linkedin.com/in/FelipeFa6}} $|$
+	\href{https://github.com/FelipeFa6}{\underline{Github.com/FelipeFa6}}
 \end{center}
 
 
-%-----------EDUCATION-----------
+% education 
 \section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {University of Helsinki}{Remote}
-      {Full stack Open Certification}{Jan. 2024 -- Present}
-    \resumeSubheading
-      {INACAP}{RM, Santiago Centro}
-      {Bachelor’s degree in Computer Science}{2019 -- 2022}
-  \resumeSubHeadingListEnd
+\resumeSubHeadingListStart
+\resumeSubheading
+{University of Helsinki}{Remote}
+{Full stack Open Certification}{2024}
+\resumeSubheading
+{INACAP}{Santiago de Chile}
+{Bachelor’s degree in Computer Science}{2019 -- 2022}
+\resumeSubHeadingListEnd
 
-%
-%-----------PROGRAMMING SKILLS-----------
+% technical skills
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: JavaScript, TypeScript, Python, C/C++, SQL (Postgres), NoSQL (MongoDB), HTML/CSS} \\
-     \textbf{Frameworks}{: React, Next, Redux, Node.JS, Express, Django, Jest, Boostrap, Tailwind} \\
-     \textbf{Developer Tools}{: Git, Vim, Linux, Docker, AWS} \\
-    }}
- \end{itemize}
-
- %-----------Lenguaje-----------
-\section{Languages}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Spanish}{: Native} \\
-     \textbf{English}{: Advanced} \\
-    }}
- \end{itemize}
+\begin{itemize}[leftmargin=0.15in, label={}]
+	\small{\item{
+		\textbf{Languages}{: JavaScript, Golang, PHP, Python, C } \\
+		\textbf{Frameworks}{: Next.JS, Express.JS, CodeIgniter } \\
+		\textbf{Tools}{: Linux, Git, NeoVim, Docker, AWS, Apache, Nginx} \\
+	}}
+\end{itemize}
 
 
-%-----------EXPERIENCE-----------
-\section{Experience}
-  \resumeSubHeadingListStart
+% experience
+\section{Work Experience}
+\resumeSubHeadingListStart
 
 \resumeSubheading
-  {Full Stack Developer}{Jul. 2022 -- Dec. 2023}
-  {Coolebra}{Remote Work}
-  \resumeItemListStart
-    \resumeItem{Development and deployment of a web scraping pipeline on Amazon EC2, ensuring scheduled data collection.}
-    \resumeItem{Python scrappers development for Unimarc, Easy, and Líder stores.}
-    \resumeItem{Development and publication of Coolebra’s mobile applications on Google Play Store and Apple Store.}
-    \resumeItem{Large-scale ETL data loading between OpenSearch and a SQL database using a Python-developed client.}
-    \resumeItem{Integration of a subscription system with Payku and MercadoPago providers.}
-    \resumeItem{Restructuring of the landing page in React, integrating its corresponding "product comparator."}
-  \resumeItemListEnd      
+{Web Developer}{Jan. 2024 -- \bf{Present}}
+{National Cancer Institute (Chile)}{Presential}
+\resumeItemListStart
+\resumeItem{ Led the planning, development, and testing of a Laravel-based API, improving development efficiency, ensuring data integrity, and standardizing information access. }
+\resumeItem{ Developed multiple web applications using CodeIgniter within a local network environment. }
+\resumeItem{ Debugged and refactored legacy code to enhance system performance and maintainability. }
+\resumeItem{ Managed security tasks on local Linux servers, implementing measures to safeguard data and ensure operational continuity. }
+\resumeItemListEnd      
 
 \resumeSubheading
-  {Academic Tutor}{2021}
-  {INACAP}{RM, Santiago Centro}
-  \resumeItemListStart
-    \resumeItem{Programming III: Python, OOP and Algorithms}
-    \resumeItem{Databases I: Design, normalization, and SQL scripting}
-  \resumeItemListEnd
-  
-  \resumeSubHeadingListEnd
+{Web Developer}{Jul. 2022 -- Dec. 2023}
+{Coolebra}{Remote}
+\resumeItemListStart
+\resumeItem{Development and deployment of a web scraping pipeline on Amazon EC2, ensuring scheduled data collection.}
+\resumeItem{Python scrappers development for Unimarc, Easy, and Líder stores.}
+\resumeItem{Development and publication of Coolebra’s mobile applications on Google Play Store and Apple Store.}
+\resumeItem{Large-scale ETL data loading between OpenSearch and a SQL database using a Python-developed client.}
+\resumeItem{Integration of a subscription system with Payku and MercadoPago providers.}
+\resumeItem{Restructuring of the landing page in React, integrating its corresponding "product comparator."}
+\resumeItemListEnd      
 
+\resumeSubheading
+{Academic Tutor}{2021}
+{INACAP}{RM, Santiago Centro}
+\resumeItemListStart
+\resumeItem{ \textbf{Programming III:} {Python, OOP and Algorithms} }\\
+\resumeItem{ \textbf{Databases I:} {Design, normalization, and SQL scripting}}\\
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
 
 %-----------PROJECTS-----------
-\section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{httpd} $|$ \emph{C}}{2023 -- Present}
-          \resumeItemListStart
-            \resumeItem{Light HTTP server, implemented in C with Berkeley Sockets. (not suitable for production environments)}
-          \resumeItemListEnd
+\section{Project Contributions}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+{\textbf{httpd} $|$ \emph{C}}{2023 -- Present}
+\resumeItemListStart
+\resumeItem{HTTP server, implemented in C.}
+\resumeItemListEnd
 
-        \resumeProjectHeading
-          {\textbf{cdwn} $|$ \emph{C}}{2023 -- Present}
-          \resumeItemListStart
-            \resumeItem{CLI timer with access to the motherboard speaker for audible alerts.}
-          \resumeItemListEnd
+\resumeProjectHeading
+{\textbf{cdwn} $|$ \emph{C}}{2023 -- Present}
+\resumeItemListStart
+\resumeItem{CLI timer with access to the motherboard speaker for audible alerts.}
+\resumeItemListEnd
 
-        \resumeProjectHeading
-          {\textbf{felipefarias.xyz} $|$ \emph{HUGO}}{2022 -- Present}
-          \resumeItemListStart
-            \resumeItem{Personal website.}
-          \resumeItemListEnd
+\resumeProjectHeading
+{\textbf{felipefarias.xyz} $|$ \emph{HUGO}}{2022 -- Present}
+\resumeItemListStart
+\resumeItem{Personal website.}
+\resumeItemListEnd
 
-    \resumeSubHeadingListEnd
+\resumeSubHeadingListEnd
 
-%-----------REFERENCES-----------
-\section{References}
-\begin{itemize}[leftmargin=0.15in, label={}]
-  \item{
-      \textbf{CEO Coolebra}{: Juan Paulo Alcalde} \\
-      jualcald@gmail.com \\
-      +569 7516 4779 \\
-  }
-  
-  \item{
-      \textbf{CTO Coolebra}{: Vicente García Huidobro} \\
-      vghuidobro@gmail.com \\
-      +569 7266 0698 \\
-  }
-  
-\end{itemize}
-%-------------------------------------------
 \end{document}
+
