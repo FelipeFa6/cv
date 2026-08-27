@@ -1,0 +1,238 @@
+\documentclass[letterpaper,11pt]{article}
+
+% T1: accents as a single glyph and small caps extractable as text.
+% Without this, an ATS or a Ctrl+F search would not match.
+\usepackage[T1]{fontenc}
+\usepackage[empty]{fullpage}
+\usepackage[english]{babel}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{charter}
+
+
+% ==================== MARGINS ====================
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.3in}
+
+
+% ==================== SECTION FORMATTING ====================
+
+% Real uppercase instead of \scshape: Charter has no true small caps,
+% it fakes them by scaling the same font and pdftotext reads the size
+% change as a space ("E XPERIENCE"). \MakeUppercase extracts cleanly.
+\titleformat{\section}
+{\vspace{-4pt}\raggedright\large}
+{}
+{0em}
+{\MakeUppercase}
+[\titlerule \vspace{-5pt}]
+
+
+% ==================== CUSTOM COMMANDS ====================
+
+\newcommand{\resumeItem}[1]{%
+        \item\small{#1 \vspace{-2pt}}%
+        }
+
+        \newcommand{\resumeSubheading}[4]{%
+                \vspace{-2pt}\item
+                \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+                        \textbf{#1} & #2 \\
+                        \textit{\small#3} & \textit{\small #4} \\
+                \end{tabular*}\vspace{-7pt}%
+        }
+
+        \newcommand{\resumeProjectHeading}[2]{%
+        \item
+                \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+                        \small#1 & #2 \\
+                \end{tabular*}\vspace{-7pt}%
+        }
+
+        \newcommand{\resumeSubHeadingListStart}{%
+                \begin{itemize}[leftmargin=0.15in, label={}]%
+                }
+                \newcommand{\resumeSubHeadingListEnd}{%
+        \end{itemize}\vspace{-3pt}%
+}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+
+\raggedright
+\raggedbottom
+\setlength{\tabcolsep}{0in}
+
+
+% ==================== DOCUMENT ====================
+
+\begin{document}
+
+
+% -------------------- HEADER --------------------
+
+\begin{center}
+        \textbf{\Huge Felipe Farias Escobar} \\ \vspace{1pt}
+        \small Mid-Level Software Engineer \\ \vspace{1pt}
+        Santiago, Chile \\
+        \href{mailto:felipe.farias.e1@gmail.com}{felipe.farias.e1@gmail.com} $|$
+        \href{https://www.linkedin.com/in/FelipeFa6/}{Linkedin.com/in/FelipeFa6} $|$
+        \href{https://github.com/FelipeFa6}{Github.com/FelipeFa6}
+\end{center}\vspace{-6pt}
+
+
+% -------------------- PROFESSIONAL SUMMARY --------------------
+
+\section{Professional Summary}
+
+\small{
+        Software Engineer with 4 years of experience building backend systems from
+        scratch in Go and Python, with production solutions in the healthcare and
+        energy sectors.
+}
+
+
+% -------------------- PROFESSIONAL EXPERIENCE --------------------
+
+\section{Professional Experience}
+
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Mid-Level Software Engineer}{June 2025 -- July 2026}
+{INDRA}{Hybrid}
+\resumeItemListStart
+
+\resumeItem{Resolved tickets across a highly varied technology stack
+        (\textbf{Go}, \textbf{Python}/Django, \textbf{JavaScript}/React,
+        \textbf{AWS}), contributing to \textbf{architecture}, \textbf{code review}
+and \textbf{requirements gathering}.}
+
+\resumeItem{Implemented the \textbf{Data Quality} solution alongside the
+        data architect: validation rules, sanity routines and \textbf{event saga
+        listeners} (\textbf{Java/Quarkus}, \textbf{Python}). Data quality from
+        \textbf{75\% to 98\%} at the \textbf{Coordinador El\'ectrico Nacional}
+(Chile's national grid operator), externally validated.}
+
+\resumeItemListEnd
+
+\resumeSubheading
+{Software Engineer}{January 2024 -- June 2025}
+{National Cancer Institute (Chile)}{On-site}
+\resumeItemListStart
+
+\resumeItem{Proposed, designed and built from scratch the
+        \textbf{Integrador}, an orchestrator written in \textbf{Go} that
+        synchronizes \textbf{4 Oracle databases} belonging to isolated clinical
+        systems, processing requests from an \textbf{external vendor's API} as they
+arrive. \textbf{Still in production}.}
+
+\resumeItem{Implemented the \textbf{event saga} pattern with
+        \textbf{compensation} on partial failures, \textbf{retries with queueing}
+        and persistence of each saga's state in the database for \textbf{review and
+auditing}. \textbf{Unit and integration tests} with \textbf{testify}.}
+
+\resumeItem{Enabled \textbf{FHIR} interoperability with the \textbf{North
+        Metropolitan Health Service} via \textbf{Mirth Connect}, eliminating manual
+data updates in production.}
+
+\resumeItem{\textbf{CI/CD} with \textbf{Git Hooks} and migration to
+        \textbf{Docker} (deployment from \textbf{1 hour to 5 minutes});
+        \textbf{Linux/Apache} server administration and maintenance of legacy
+\textbf{PHP 5.7/CodeIgniter 3}, migrated to \textbf{PHP 8/Laravel}.}
+
+\resumeItemListEnd
+
+\resumeSubheading
+{Junior Software Developer}{July 2022 -- December 2023}
+{Coolebra}{Remote}
+\resumeItemListStart
+
+\resumeItem{Built from scratch an \textbf{ETL} in \textbf{Python},
+        \textbf{with no external dependencies}, indexing \textbf{200,000 products
+        daily} from \textbf{PostgreSQL} into \textbf{OpenSearch} with price
+        history, in \textbf{2 hours} across \textbf{5 machines}
+(\textbf{Terraform}).}
+
+\resumeItem{Scaled \textbf{scraping of 30+ retailers} (BeautifulSoup,
+        Selenium) using \textbf{reverse engineering} across \textbf{3 EC2
+        instances}; data visualization in \textbf{React} and \textbf{Mercado Pago}
+integration for subscriptions.}
+
+\resumeItemListEnd
+
+\resumeSubheading
+{Teaching Assistant, Object-Oriented Programming III and Databases}
+{November 2021}
+{INACAP}{Remote}
+\resumeItemListStart
+
+\resumeItem{Taught inheritance and object-oriented modeling in
+\textbf{Python} and \textbf{relational databases}.}
+
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+% -------------------- CURRENT PROJECT --------------------
+
+\section{Current Project}
+
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{Petfi.io} $|$ Social platform for animal rescue and adoption $|$
+Collaborative project}
+{March 2026 -- Present}
+\resumeItemListStart
+
+\resumeItem{Rescue and adoption platform with over \textbf{11,000 active
+        users}. Proposed and implemented features in \textbf{Flutter} using
+\textbf{Spec Driven Development}.}
+
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+% -------------------- EDUCATION AND CERTIFICATIONS --------------------
+
+\section{Education and Certifications}
+
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{INACAP} $|$ B.Eng. in Computer Engineering}
+{2019 -- 2022}
+
+\resumeProjectHeading
+{\textbf{University of Helsinki} $|$ Full Stack Open Certification}
+{2024}
+
+\resumeProjectHeading
+{\textbf{Oracle} $|$ Oracle Cloud Infrastructure Certified Foundations
+Associate}
+{2026}
+
+\resumeSubHeadingListEnd
+
+
+% -------------------- TECHNOLOGIES --------------------
+
+\section{Technologies}
+
+\small{
+        \textbf{Languages}: Go, Python, JavaScript \\
+        \textbf{Databases}: Oracle/PL-SQL, PostgreSQL, MongoDB, OpenSearch \\
+        \textbf{DevOps}: AWS (EC2), Docker, Terraform, CI/CD, Git Hooks, Linux
+}
+
+
+\end{document}

@@ -1,486 +1,367 @@
 PERFIL PROFESIONAL - DOCUMENTO MAESTRO
+Felipe Farias Escobar
+Última actualización: agosto 2026
 
 
 ROL DE ESTE ARCHIVO
 ===================
-Este es el archivo padre: la única fuente de verdad de logros, fechas,
-métricas, tecnologías y referencias. Ningún CV puede afirmar algo que no
-esté aquí.
+Única fuente de verdad del perfil: logros, fechas, métricas,
+tecnologías y referencias. Archivo autónomo: no genera ni depende
+de otros documentos.
 
-Los archivos derivados NO repiten los logros. Solo definen cómo
-priorizarlos y redactarlos para una tecnología concreta:
+Dato nuevo o contradicción: se corrige aquí primero.
 
-    context/context_go.txt   -> CV Go -> cv/out/go_es.pdf
-
-Pendientes de todo tipo: context/todo.md
-
-Tecnologías objetivo de la búsqueda: Go y Python.
-La versión JavaScript fue descartada (agosto 2026): no se postulará a
-cargos de esa tecnología.
-
-Flujo de trabajo: cuando aparece un dato nuevo, se agrega PRIMERO aquí y
-después se regenera el CV. Nunca al revés.
+Tecnologías objetivo: Go, JavaScript, Python.
 
 
-REGLAS DE FORMATO GLOBALES (aplican a TODAS las versiones)
-==========================================================
-
-1. UNA SOLA PÁGINA. Es la restricción dura. Todo el contenido debe
-   entrar en una hoja.
-
-2. FUENTE: 11pt. Definida en \documentclass de cv/template_es.tex.
-   Medición real con el contenido completo en estilo formal:
-       10pt -> 1 página
-       11pt -> 1 página  (valor elegido)
-       12pt -> 2 páginas
-   12pt fue descartado: obligaba a borrar ~14 líneas de contenido.
-
-3. NO ELIMINAR EXPERIENCIAS. Ningún empleo, proyecto ni logro se borra
-   para ganar espacio. Todos aportan a demostrar versatilidad
-   tecnológica y logros personales.
-
-4. REDACCIÓN FORMAL, SIN PRIMERA PERSONA. Estilo nominal:
-       "Implementé el patrón..."  ->  "Implementación del patrón..."
-       "Propuse, diseñé y construí" -> "Propuesta, diseño y construcción"
-       "Enseñé herencia..."       ->  "Docencia en herencia..."
-   Nunca usar "yo", "mi", ni verbos conjugados en primera persona.
-   Ojo: el estilo nominal ocupa MÁS espacio que el personal (los
-   artículos "de la", "del" suman). Considerarlo al medir páginas.
-
-5. BULLETS CONDENSADOS. Redacción breve y directa, con UNA excepción:
-   los dos bullets del Integrador en Go (INCancer) van completos, con
-   todo su detalle técnico. Son el activo principal del perfil.
-
-6. Si falta espacio, en este orden:
-   a. Matar líneas viudas: bullets que terminan con una o dos palabras
-      solas en la última línea. Cada viuda cuesta una línea completa y
-      recortar 2-3 palabras la recupera sin perder información.
-      Es la palanca más rentable: hay que verlas en el PNG, no en
-      el texto.
-   b. Fusionar bullets relacionados del MISMO empleo
-   c. Consultar al usuario para priorizar
-   Nunca: borrar logros ni empleos.
-
-7. VERIFICAR SIEMPRE renderizando a imagen, no solo contando páginas:
-       pdftoppm -png -r 110 cv/out/<version>.pdf /tmp/rev
-   Un texto que se sale del área imprimible sigue reportando el mismo
-   número de páginas en pdfinfo.
-
-8. NO usar \setlist de enumitem para compactar listas: colapsa contra
-   los \vspace negativos de los comandos \resume* y el texto se monta
-   sobre la línea anterior. No subir \textheight sobre 1.3in.
-
-9. EL PDF DEBE SER LEGIBLE POR UN ATS. No basta con que se vea bien:
-   el texto que extrae pdftotext es lo que lee el filtro automático de
-   una postulación. Dos reglas que salen de esto (ambas ya aplicadas en
-   cv/template_es.tex y cv/template.tex, no revertir):
-
-   a. \usepackage[T1]{fontenc} como primera línea del preámbulo, antes
-      de babel y de charter. Con la codificación OT1 por defecto, las
-      vocales acentuadas se escriben como "ı" sin punto + tilde
-      combinante: "clínicos" se extrae como dos codepoints y una
-      búsqueda por "clínicos" NO hace match. Con T1 sale un glifo único.
-      T1 es además lo que hace que \MakeUppercase convierta í -> Í
-      correctamente en vez de romper el acento.
-
-   b. NO usar \scshape en los encabezados de sección. Charter no trae
-      fuente de versalitas propia (pdffonts solo muestra CharterBT-Roman,
-      -Bold e -Italic), así que LaTeX las simula escalando la misma
-      fuente: la primera letra va a tamaño completo y el resto en
-      capitales reducidas. pdftotext lee ese cambio de escala a mitad de
-      palabra como un espacio y extrae "E XPERIENCIA P ROFESIONAL".
-      Ninguna codificación de fuente lo arregla, es inherente al
-      mecanismo. La solución es mayúsculas reales en \titleformat:
-
-          \titleformat{\section}{
-            \vspace{-4pt}\raggedright\large
-          }{}{0em}{\MakeUppercase}[\titlerule \vspace{-5pt}]
-
-      Efecto secundario aceptado: los encabezados se extraen en
-      mayúsculas ("EDUCACIÓN"), así que una búsqueda sensible a
-      mayúsculas por "Educación" no matchea el título. Los ATS buscan
-      sin distinguir caso y el cuerpo del CV no se ve afectado.
-
-   Si se cambia de fuente o de motor (XeLaTeX/LuaLaTeX con fontspec),
-   revalidar ambos puntos antes de dar el cambio por bueno.
-
-10. VERIFICAR LA EXTRACCIÓN, no solo el render. Complemento de la regla
-    7; el PNG no muestra estos errores porque visualmente el PDF se ve
-    perfecto:
-        pdftotext cv/out/<version>.pdf - | grep -E "^[A-ZÁÉÍÓÚÑ ]+$"
-        pdftotext cv/out/<version>.pdf - | grep -c "clínicos"
-    Los encabezados deben salir como una sola palabra por término
-    ("EXPERIENCIA PROFESIONAL", nunca "E XPERIENCIA") y las palabras
-    acentuadas del cuerpo deben hacer match exacto.
+REGLAS DE ESTE DOCUMENTO
+========================
+R-01. Nada sin confirmar. No inferir, redondear ni rellenar
+      logros, métricas, tecnologías, fechas ni cargos. Ante duda,
+      preguntar.
+R-02. Lo no confirmado se marca en la misma línea, entre
+      paréntesis, con "falta confirmar". No omitir ni inventar.
+R-03. Distinguir experiencia real de formación. Lo aprendido en
+      cursos se anota como tal.
+R-04. Corregir en el lugar y propagar a todas las secciones. Sin
+      notas históricas del tipo "antes decía X".
+R-05. Un dato, una ubicación.
+R-06. Orden fijo de secciones: encabezado, ROL DE ESTE ARCHIVO,
+      REGLAS DE ESTE DOCUMENTO, DATOS DE CONTACTO, RESUMEN,
+      OBJETIVO, EXPERIENCIA LABORAL, PROYECTO ACTUAL, EDUCACIÓN Y
+      CERTIFICACIONES, TECNOLOGÍAS, LÍMITES DEL PERFIL, REMOTO
+      INTERNACIONAL, REFERENCIAS, CRONOLOGÍA.
+R-07. Texto plano. Ancho máximo 72. Títulos en mayúscula
+      subrayados con "=" del mismo largo, dos líneas en blanco
+      antes. Viñetas con "- ". Sin markdown ni emojis.
+R-08. Experiencia en orden cronológico inverso.
+R-09. Fechas "mes AAAA", siempre en minúscula, incluso al abrir
+      línea. Rangos con " - ". Empleo terminado: [FINALIZADO].
+R-10. Métricas con unidad, período y validación.
+R-11. Sin límite de extensión. Solo se elimina lo que el usuario
+      pida.
+R-12. Actualizar la fecha del encabezado en cada edición.
 
 
-CÓMO AGREGAR UNA NUEVA VERSIÓN POR TECNOLOGÍA
-=============================================
-Ejemplo para Python (py_es):
+DATOS DE CONTACTO
+=================
+Santiago, Chile
+felipe.farias.e1@gmail.com
+felipe.farias@petfi.io
+linkedin.com/in/FelipeFa6
+github.com/FelipeFa6
 
-1. Crear context/context_py.txt copiando la estructura de context_go.txt
-   y redefiniendo: puesto objetivo, jerarquía de logros, línea de
-   tecnologías y qué se sacrifica.
-
-2. Crear los tres fragmentos:
-       cv/fragments/python/summary_es.txt
-       cv/fragments/python/experience_es.txt
-       cv/fragments/python/tech_es.txt
-
-3. En el Makefile de la raíz:
-   - Agregar la versión a VERSIONS:  VERSIONS := go_es py_es
-   - Agregar la regla de ensamblado:
-
-       $(TEX_DIR)/py_es.tex: cv/template_es.tex \
-           $(FRAG)/python/summary_es.txt \
-           $(FRAG)/python/experience_es.txt \
-           $(FRAG)/python/tech_es.txt
-       	$(call ASSEMBLE,python,es,cv/template_es.tex)
-
-   El primer argumento de ASSEMBLE es el nombre de la CARPETA de
-   fragmentos, que puede diferir del nombre de la versión: la carpeta
-   "python" alimenta la versión "py_es". Revisar siempre que coincidan
-   con lo que existe en cv/fragments/.
-
-4. Compilar con make all y verificar 1 página revisando el PNG, no solo
-   pdfinfo.
+Disponibilidad: inmediata (desvinculación de INDRA, julio 2026)
+Sectores: sin restricción
+Modalidad: presencial, híbrida o remota
 
 
 RESUMEN
 =======
-Ingeniero en Informática con 4+ años de experiencia construyendo sistemas desde cero,
-manteniendo código legacy, e implementando soluciones críticas en sectores de salud y
-energía. Especialista en fullstack development, infraestructura cloud, e integración de
-sistemas. Experiencia en múltiples lenguajes: Go, Python, JavaScript, PHP, Java.
+Ingeniero en Informática, 4 años. Backend desde cero, código
+legacy y sistemas críticos en salud y energía. Perfil full stack
+con foco en backend, integración de sistemas e infraestructura
+cloud.
+
+
+OBJETIVO
+========
+Cargo: Ingeniero de Software Semi Senior.
+
+Busca ganar seniority y especializarse en sus tecnologías
+objetivo. Go es el eje; JavaScript es la segunda especialización
+que quiere profundizar.
+
+Prioriza equipos con un perfil Senior al lado: viene de definir
+arquitectura por su cuenta y busca contraste de criterio, code
+review exigente y estándares definidos.
+
+Interés declarado en trabajo con IA dentro del ciclo de
+desarrollo (Spec Driven Development).
+
+Inglés: C1. Sostiene conversaciones profesionales sin problema.
+
+Renta en INDRA: $1.800.000 líquidos (bruto entre $2.240.000 y
+$2.300.000).
+Pretensión: $1.900.000 - $2.100.000 líquidos, equivalente a unos
+$2.400.000 - $2.650.000 brutos. Conversable según el paquete
+completo.
 
 
 EXPERIENCIA LABORAL
 ===================
 
 INDRA - Ingeniero de Software Semi Senior
-Período: Junio 2025 - Julio 2026 (1 año) [FINALIZADO - desvinculación en Julio 2026]
-Modalidad: Híbrido
+junio 2025 - julio 2026 (1 año) [FINALIZADO]
+Híbrido
 
-Proyecto Calidad del Dato (Agosto 2025 - Diciembre 2025):
-- Trabajo en equipo con arquitecto de datos
-- Responsabilidad: Implementación de la solución
-- Definición de reglas de validación
+Calidad del dato (agosto - diciembre 2025). Scrum:
+- Implementación junto al arquitecto de datos
+- Reglas de validación y rutinas de verificación
 - Marcado de secciones a cambiar en frontend
-- Testing y escritura de código
-- Unión de listener event saga (Java/Quarkus + Python)
-- Resultado: Elevó sanidad de datos de 75% a 98% en plataformas del Coordinador
+- Testing
+- Unión de listeners event saga (Java/Quarkus + Python)
+- Calidad del dato 75% a 98% en plataformas del Coordinador
   Eléctrico Nacional, validado externamente
 
-Resolución de Tickets y Bugs (Continuo):
-- Resolución de tickets conforme surgían
+Tickets (continuo):
 - Mantenimiento de microservicios en Go
-- Optimización de procesos: mejora de queries, extracción de datos bulk
-- Re-escritura e implementación de mejoras
-- Problemas recurrentes: Botones no funcionales, optimización bulk
+- Desarrollo con Django, React y AWS
+- Trabajo puntual sobre GCP en el Coordinador Eléctrico Nacional.
+  Experiencia mínima (falta confirmar qué servicios)
+- Optimización de queries y extracción bulk
+- Reescritura e implementación de mejoras
 
-Distribución Técnica:
-- Principalmente: Python
-- Luego: Golang
-- Luego: JavaScript
-
-Responsabilidades Transversales:
-- Code Review
-- Definición de arquitectura
-- Toma de requerimientos
+Stack real: Python > Go > JavaScript
+Transversal: code review, arquitectura, requerimientos
 
 
 Instituto Nacional del Cáncer - Ingeniero de Software
-Período: Enero 2024 - Junio 2025 (1.5 años)
-Modalidad: Presencial
-Dedicación: Tiempo completo
+enero 2024 - junio 2025 (1.5 años)
+Presencial, tiempo completo
 
-Proyecto Principal - Integrador (Go):
-- Proyecto desde 0, propuesta propia que evolucionó en herramienta útil
-- Responsabilidades: Planteamiento, arquitectura, despliegue en producción
-- 4 bases de datos Oracle con dispersión de datos en distintas tablas
-- Eliminó actualizaciones manuales de datos (antes requerían intervención IT)
-- Implementaba estándar FHIR
-- Comunicación con Servicio de Salud Metropolitano Norte vía Mirth Connect
-- Sistema en producción actualmente
+INTEGRADOR (Go). Propuesta propia, desde cero:
+- Planteamiento, arquitectura y despliegue en producción
+- Sincroniza 4 bases Oracle de sistemas clínicos aislados, datos
+  dispersos en distintas tablas
+- Eliminó actualizaciones manuales que requerían intervención TI
+- Sigue en producción
+- Endpoints HTTP propios con Gin: recibe solicitudes de la API
+  de un proveedor externo a medida que llegan. No es batch ni
+  polling
+- Patrón event saga
+- Concurrencia: goroutines con sync.WaitGroup
+- Flujo: lectura de campos, resolución de qué bases modificar,
+  actualización de tablas, actualización del estado de la saga
+- Compensación: revierte las bases ya actualizadas ante fallo
+  parcial. Rollback real, no marcado para revisión manual
+- Reintentos: solicitudes fallidas encoladas en tabla de base de
+  datos, no en memoria. Sobreviven a caída del proceso
+- Estado de cada saga persistido para auditoría
+- Tests unitarios y de integración con testify
+- No usa arquitectura hexagonal: saga y acceso a Oracle acoplados
 
-Detalle técnico del Integrador:
+Interoperabilidad:
+- Estándar FHIR implementado sobre las bases de datos de
+  diagnósticos y otro flujo de datos
+- Comunicación con el Servicio de Salud Metropolitano Norte vía
+  Mirth Connect
 
-- Patrón: Event Saga para la actualización en base de datos
+Infraestructura:
+- CI/CD con Git Hooks
+- Migración a Docker: despliegue de 1 hora a 5 minutos
+- Servidores Linux/Apache: usuarios, logs, seguridad, políticas
 
-- Concurrencia: goroutines para paralelizar las actualizaciones,
-  sincronizadas con sync.WaitGroup
+Legacy:
+- Bugs en PHP 5.7 / CodeIgniter 3
+- Migración a PHP 8 / Laravel
 
-- Disparo y flujo de entrada: no es un batch programado. Procesa las
-  solicitudes a medida que llegan desde la API de un proveedor externo;
-  el volumen depende del tráfico de ese proveedor.
-
-- Flujo de ejecución:
-  1. Lectura de los campos a actualizar
-  2. Revisión/resolución de qué bases deben modificarse
-  3. Actualización de tablas
-  4. Actualización del estado de la saga
-
-- Manejo de fallos:
-  * Compensación generada en tiempo breve, dejando el caso disponible
-    para revisión
-  * Reintentos ante falla, con encolado de las solicitudes fallidas
-  * El estado de cada saga queda registrado en base de datos para
-    revisiones posteriores y auditorías
-
-- Testing: tests unitarios + tests de integración contra base de datos,
-  usando testify
-
-
-PENDIENTE POR CONFIRMAR (elevaría el CV para roles Go):
-- Volumen concreto (solicitudes/registros por día o por hora)
-- Observabilidad (logs estructurados, métricas, cómo se monitoreaba)
-- Impacto medible (tiempo antes/después, horas de TI liberadas,
-  reducción de errores)
-- Si expone endpoints HTTP propios y con qué librería (net/http, chi,
-  Gin, Echo)
-- Uso de context para timeouts y cancelación
-
-Sistemas Legacy (PHP):
-- Resolución de bugs en PHP 5.7 con CodeIgniter 3
-- Participación en migraciones a PHP 8 con Laravel
-
-Infraestructura y DevOps:
-- Implementación de CI/CD con Git Hooks
-- Migración a Docker y modernización de intranet: despliegues de 1 hora → 5 minutos
-- Administración de servidores Linux
-  * Sanitización de usuarios
-  * Limpieza de logs antiguos
-  * Administración y seguridad de usuarios en Apache
-  * Mantenimiento continuo
-  * Implementación de políticas
-
-Responsabilidades Operacionales:
-- Toma de requerimientos constante
-- Comunicación directa con doctores y equipos médicos
-- Solución de problemáticas en tiempo real
-- Servicio técnico interno
+Operacional:
+- Requerimientos y comunicación directa con doctores y equipos
+  médicos
+- Resolución en tiempo real, servicio técnico interno
 
 
 Coolebra - Junior Software Developer
-Período: Julio 2022 - Diciembre 2023 (1.5 años)
-Modalidad: Remoto
-Dedicación: 3 meses prácticas → Fulltime
+julio 2022 - diciembre 2023 (1.5 años)
+Remoto. 3 meses de práctica, luego tiempo completo
+Kanban con planning poker
 
-Proyecto Principal - ETL y Visualización (Full Stack):
+Flujo: scraping, PostgreSQL, ETL, OpenSearch.
+DynamoDB no participa en este flujo: era el modelo de
+suscripciones.
 
-Flujo de datos completo (confirmado por el usuario, agosto 2026):
-  scraping de retailers → PostgreSQL (RDB) → ETL → OpenSearch
-  DynamoDB NO participa en este flujo: se usaba para el modelo de
-  suscripciones (ver Feature de Negocio). No mezclar ambos.
+ETL en Python, desde cero:
+- Sin dependencias externas: solo librería estándar, sin
+  frameworks ETL ni ORMs
+- JSON desde PostgreSQL, poblada por los scrapers
+- Audita 200.000 productos diarios, nuevos y existentes
+- Historial de fechas y precios
+- 2 horas diarias sobre 5 máquinas
+- Deploy con Terraform
 
-Backend - ETL sin dependencias externas:
-  - Lenguaje: Python. "Sin dependencias externas" = solo librería
-    estándar, sin frameworks de ETL ni ORMs.
-  - Generaba JSON desde PostgreSQL RDB, poblada por los scrapers
-  - Auditaba cambios en 200.000 productos diarios (nuevos y existentes)
-  - Historial con fechas y precios
-  - Proceso de 2 horas diarias
-  - 5 máquinas funcionando en conjunto
-  - Deploy con Terraform
+OpenSearch:
+- Despliegue e implementación como servicio
+- API calls para visualización
 
-Data - OpenSearch:
-  - Aprendiste despliegue e implementación
-  - Implementaste OpenSearch como servicio
-  - Realizabas API calls para visualización
+Scraping:
+- Más de 30 retailers, BeautifulSoup y Selenium
+- Django alojaba la app, no era herramienta de scraping
+- Ingeniería inversa de los sistemas
+- 3 instancias EC2, 3 procesos cada una
+- Primer contacto con infraestructura como código
 
-Frontend - Visualización:
-  - Chart.js para visualización de datos
-  - React para actualización de página principal
-  - Desarrollo integro: Backend → Frontend
-
-Web Scraping:
-  - Actualización y creación de scrapers para 30+ retailers
-  - Tecnologías: BeautifulSoup, Selenium
-  - Django era el framework de la app que ALOJABA los scrapers, no una
-    herramienta de scraping (confirmado por el usuario, agosto 2026).
-    Si se menciona, decirlo así de explícito: "scrapers con
-    BeautifulSoup y Selenium sobre una app Django". Nunca "scrapers con
-    Django", que suena a confusión técnica ante un entrevistador.
-  - Desafío principal: Ingeniería inversa de sistemas
-  - 3 máquinas EC2 con 3 procesos cada una
-  - Primer contacto con infraestructura como código
-
-Feature de Negocio:
-  - Módulo de ahorro en bencina
-  - Integración con Mercado Pago para suscripciones
-  - DynamoDB como almacenamiento del modelo de suscripciones
+Frontend y negocio:
+- React en página principal, Chart.js
+- Módulo de ahorro en bencina
+- Mercado Pago para suscripciones, DynamoDB de almacenamiento
 
 
 INACAP - Tutor de POO III y Bases de Datos Relacionales
-Período: Noviembre 2021 (1 mes)
-Tipo: Trabajo pagado
-Modalidad: Presencial
-Audiencia: Estudiantes de pregrado
+noviembre 2021 (1 mes)
+Pagado, presencial, estudiantes de pregrado
 
-Lenguaje: Python (el ramo POO III se dictaba en Python)
-
-Contenido:
-- Herencias y modelado orientado a objetos
-- Solución de problemas
-- Bases de datos relacionales
-
-Relevancia por tecnología:
-- CV Python: ALTA. Es evidencia de dominio del lenguaje a nivel de poder
-  enseñarlo, no solo usarlo. Además es el primer registro cronológico de
-  Python en el perfil (nov 2021), lo que extiende la antigüedad con el
-  lenguaje más allá de la experiencia laboral en Coolebra.
-- CV Go: BAJA. Se incluye igual (ver principio de no eliminar
-  experiencias), al final de la sección de experiencia y con redacción
-  breve.
-
-Nota: es la única experiencia del perfil con componente de enseñanza y
-comunicación técnica. Sirve como señal de mentoría para vacantes que
-pidan liderazgo técnico o acompañamiento a perfiles junior.
+- Python (el ramo se dictaba en Python)
+- Herencias, modelado orientado a objetos, resolución de
+  problemas, bases de datos relacionales
+- Primer registro de Python en el perfil
+- Única experiencia con componente de enseñanza
 
 
-PROYECTOS ACTUALES
-==================
+PROYECTO ACTUAL
+===============
 
-Petfi.io - Plataforma Social de Rescate y Adopción
-Período: Marzo 2026 - Presente
-Modalidad: Voluntario (comenzó durante tiempo sin asignaciones en INDRA)
-Estado: En constante desarrollo
+Petfi.io - Plataforma social de rescate y adopción
+marzo 2026 - presente
+Voluntario, en desarrollo
+Proyecto aparte, no empleo: por eso se solapa con INDRA
 
-Descripción: Plataforma social para rescate, adopción y hogar temporal en Chile.
-Gratis para fundaciones y adoptantes.
+Rescate, adopción y hogar temporal en Chile. Gratis para
+fundaciones y adoptantes. Más de 11.000 usuarios activos.
 
-Responsabilidades:
-- Propuesta de nuevas funcionalidades
-- Implementación mediante Spec Driven Development con Claude
-- Desarrollo con Flutter
+- Propuesta e implementación de funcionalidades
+- Mobile con Flutter
+- Backend Firebase, base de datos Firestore
+- Spec Driven Development con Claude
+  (falta confirmar si usa Cloud Functions, Cloud Storage,
+  Authentication o reglas de seguridad de Firestore)
 
-Tecnología:
-- Flutter (mobile)
-- Spec Driven Development
+Único respaldo de Firestore y de IA en el ciclo de desarrollo.
+Mayor experiencia en Google Cloud del perfil; la de INDRA es
+menor.
 
 
-EDUCACIÓN
-=========
+EDUCACIÓN Y CERTIFICACIONES
+===========================
 
-Universidad INACAP
-Carrera: Ingeniería en Informática (NO "en Computación")
-Finalización: 2022
-Título Entregado: Marzo 2023
+INACAP - Ingeniería en Informática (no "en Computación")
+Egreso 2022. Título entregado marzo 2023.
 
-Universidad de Helsinki
-Curso: Fullstack Development
-Enfoque: JavaScript
-Tecnologías: ReactJS, ExpressJS
+Universidad de Helsinki - Full Stack Open
+Formación, no experiencia laboral. React, Express, Node.js,
+MongoDB.
+(falta confirmar qué módulos se certificaron)
 
 Oracle Cloud Infrastructure 2025 Certified Foundations Associate
-Emisor: Oracle
-Conocimiento de servicios core OCI
-Válida hasta: Mayo 30, 2028
+Servicios core de OCI. Válida hasta el 30 de mayo de 2028.
 
 
-TECNOLOGÍAS Y HABILIDADES
-==========================
+TECNOLOGÍAS
+===========
 
-Lenguajes de Programación:
-- Go (Advanced): Goroutines, Channels, Concurrencia, Microservicios, REST APIs, Testing
-- Python (Advanced): ETL, Web Scraping, Data Processing, Pandas, FastAPI, Event Saga Listeners
-- JavaScript (Intermediate): Frontend, React
-- PHP (Intermediate): PHP 5.7 (CodeIgniter 3), PHP 8 (Laravel)
-- Java: Quarkus, Event Saga implementation
+Lenguajes:
+- Go, Python, JavaScript, SQL (PL/SQL y estándar), PHP, Dart
 
-Frameworks & Librerías:
-- Backend: FastAPI, Django, Express, Quarkus, Laravel
-- Frontend: React, Chart.js
-- Mobile: Flutter
+Frameworks:
+- Gin, FastAPI, Django, Express, Laravel, React, Flutter,
+  Chart.js
 
-Bases de Datos & Data:
-- Oracle/PL/SQL
-- PostgreSQL
-- MySQL
-- MongoDB
+Bases de datos:
+- Oracle/PL-SQL, PostgreSQL
+- MongoDB, Firestore, DynamoDB
 - OpenSearch/Elasticsearch
 
-DevOps & Infraestructura:
-- AWS (EC2, etc.)
-- Docker
-- Terraform
-- CI/CD (Git Hooks)
-- Linux (administración, seguridad, políticas)
-
-Arquitectura:
-- Microservicios
-- Sistemas de Integración
-- ETL Pipelines
-- Interoperabilidad FHIR
-- Event-Driven Architecture
-
-Herramientas & Servicios:
-- Git & Git Hooks
-- Mirth Connect
-- Mercado Pago API
-- BeautifulSoup
-- Selenium
-- Chart.js
+Cloud e infraestructura:
+- AWS (EC2), GCP (Firebase/Firestore)
+- Docker, Terraform, CI/CD con Git Hooks, Linux
 
 Testing:
-- testify (Go)
-- Tests unitarios
-- Tests de integración contra base de datos
+- testify, tests unitarios, tests de integración contra base de
+  datos
 
-Patrones:
-- Event Saga (con compensación y reintentos)
+Patrones y arquitectura:
+- Event saga con compensación y reintentos
 - Concurrencia con goroutines y sync.WaitGroup
-- Procesamiento dirigido por eventos/solicitudes entrantes
-- Encolado y reintentos ante fallos
-- Registro de estado para auditoría
-- Microservicios
-- ETL
+- Procesamiento dirigido por eventos
+- Encolado y reintentos, registro de estado para auditoría
+- Microservicios, ETL, integración de sistemas, FHIR
 
 Metodologías:
-- Spec Driven Development
-- Code Review
-- Arquitectura de sistemas
+- Spec Driven Development, Scrum, Kanban con planning poker,
+  code review
+
+Herramientas:
+- Git, Mirth Connect, Mercado Pago API, BeautifulSoup, Selenium
+
+
+LÍMITES DEL PERFIL
+==================
+Lo que NO se maneja. No afirmar nada de esta lista.
+
+- Arquitectura hexagonal: no aplicada. Se conoce el concepto, no
+  hay implementación propia
+- Node.js y Express: solo Full Stack Open, nunca producción
+- Redux: solo temario del Full Stack Open
+- Kubernetes: no. Docker sí, en producción
+- Cloud Run y Pub/Sub: se conocen los patrones de integración
+  asíncrona, no los productos
+- gRPC, Kafka, RabbitMQ, NATS, Prometheus, Grafana: sin
+  experiencia
+- Low-Code y No-Code: sin experiencia ni cursos
+- MySQL: sin experiencia real
+
+Sin confirmar, preguntar antes de afirmar:
+- Programación funcional: posible respaldo en el ETL de Coolebra
+- OAuth y Claims: posible respaldo si Petfi.io usa Firebase
+  Authentication
+
+
+REMOTO INTERNACIONAL (IDEA A FUTURO)
+====================================
+Sin decisión tomada. Anotado para cuando corresponda.
+
+Motivo: la renta actual ya está en el techo de la banda semi
+senior en Chile. El siguiente salto real no es de banda, es de
+moneda. Inglés C1 y Go son las dos palancas.
+
+Plataformas con filtro riguroso y contratos largos:
+- Turing, Andela, Toptal, Lemon.io, Arc.dev
+- Revelo, BairesDev (enfoque LATAM)
+
+Bolsas de empleo remoto:
+- We Work Remotely, Remote OK, Wellfound, Himalayas, Remotive
+- LinkedIn con filtro remoto por país
+
+Enfoque LATAM en español:
+- Get on Board, Torre, WeRemoto, RemoteJobs.lat, RemotoList
+- Workana (freelance, entrada más accesible)
+
+Antes de aceptar:
+- Revisar tributación en Chile para exportación de servicios:
+  se requiere factura de exportación ante el SII
+- Definir si el contrato es relación laboral o prestación de
+  servicios
+- El perfil y el resumen deben estar en inglés
+
+(la lista se verificó en agosto 2026; conviene revalidarla antes
+de usarla)
 
 
 REFERENCIAS
 ===========
 
 Emiliano Pardo
-Cargo: Project Manager
-Empresa: INDRA
-Email: empardo@indracompany.com
+Jefe de Proyectos de la célula, INDRA
+empardo@indracompany.com
 
-Juan Camilo
-Cargo: Developer
-Empresa: Instituto Nacional del Cáncer
-Email: juancamilo.hueje@incancer.cl
-Teléfono: +56 9 4022 8856
+Juan Camilo Hueje
+Jefe de Informática, Instituto Nacional del Cáncer
+juancamilo.hueje@incancer.cl
++56 9 4022 8856
 
 Vicente García Huidobro
-Cargo: CTO
-Empresa: Coolebra SpA
-Email: vghuidobro@gmail.com
-Teléfono: +56 9 7266 0698
+CTO, Coolebra SpA
+vghuidobro@gmail.com
++56 9 7266 0698
 
 
-CRONOLOGÍA RESUMIDA
-===================
+CRONOLOGÍA
+==========
+noviembre 2021: INACAP, tutor
+enero - junio 2022: sin documentar
+julio 2022 - diciembre 2023: Coolebra
+enero 2024 - junio 2025: Instituto Nacional del Cáncer
+junio 2025 - julio 2026: INDRA [FINALIZADO]
+marzo 2026 - presente: Petfi.io
 
-Noviembre 2021: Tutor INACAP
-Enero 2022 - Junio 2022: (Período no documentado)
-Julio 2022 - Diciembre 2023: Coolebra (Junior → Full-time)
-Enero 2024 - Junio 2025: Instituto Nacional del Cáncer
-Junio 2025 - Julio 2026: INDRA (finalizado)
-Marzo 2026 - Presente: Petfi.io (proyecto personal, continúa activo)
-
-Total de experiencia: 4+ años en desarrollo de software
-
-
-INFORMACIÓN IMPORTANTE
-======================
-
-Ubicación: Chile
-Email: felipe.farias@petfi.io
-Tipo de búsqueda: Posiciones como Ingeniero de Software (Semi Senior o Senior)
-Sectores de interés: Salud, Energía, FinTech, Plataformas digitales
-Disponibilidad: Inmediata (desvinculación de INDRA en Julio 2026)
+Total: 4 años.
