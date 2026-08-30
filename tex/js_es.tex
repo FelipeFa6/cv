@@ -1,0 +1,257 @@
+\documentclass[letterpaper,11pt]{article}
+
+% T1: acentos como glifo único (í, no ı+´) y versalitas extraíbles como texto.
+% Sin esto, un ATS o un Ctrl+F por "clínicos" no hace match.
+\usepackage[T1]{fontenc}
+\usepackage[empty]{fullpage}
+\usepackage[spanish]{babel}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{charter}
+
+
+% ==================== MÁRGENES ====================
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.3in}
+
+
+% ==================== FORMATO DE SECCIONES ====================
+
+% Mayúsculas reales en vez de \scshape: Charter no trae versalitas propias,
+% las simula escalando la misma fuente y pdftotext lee el cambio de tamaño
+% como espacio ("E XPERIENCIA"). \MakeUppercase extrae limpio.
+\titleformat{\section}
+  {\vspace{-4pt}\raggedright\large}
+  {}
+  {0em}
+  {\MakeUppercase}
+  [\titlerule \vspace{-5pt}]
+
+
+% ==================== COMANDOS PROPIOS ====================
+
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1 \vspace{-2pt}}%
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-7pt}%
+}
+
+\newcommand{\resumeProjectHeading}[2]{%
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+  \end{tabular*}\vspace{-7pt}%
+}
+
+\newcommand{\resumeSubHeadingListStart}{%
+  \begin{itemize}[leftmargin=0.15in, label={}]%
+}
+\newcommand{\resumeSubHeadingListEnd}{%
+  \end{itemize}\vspace{-3pt}%
+}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+
+\raggedright
+\raggedbottom
+\setlength{\tabcolsep}{0in}
+
+
+% ==================== DOCUMENTO ====================
+
+\begin{document}
+
+
+% -------------------- ENCABEZADO --------------------
+
+\begin{center}
+  \textbf{\Huge Felipe Farias Escobar} \\ \vspace{1pt}
+  \small Ingeniero de Software Semi Senior \\ \vspace{1pt}
+  Santiago, Chile \\
+  \href{mailto:felipe.farias.e1@gmail.com}{felipe.farias.e1@gmail.com} $|$
+  \href{https://www.linkedin.com/in/FelipeFa6/}{Linkedin.com/in/FelipeFa6} $|$
+  \href{https://github.com/FelipeFa6}{Github.com/FelipeFa6}
+\end{center}\vspace{-6pt}
+
+
+% -------------------- RESUMEN PROFESIONAL --------------------
+
+\section{Resumen Profesional}
+
+\small{
+  Ingeniero de Software con 4 años de experiencia en desarrollo full stack
+  con foco en backend e integración de sistemas, en producción con
+  JavaScript/React, Go y Python sobre PostgreSQL, Oracle, Docker y AWS en
+  los sectores de salud, energía y retail. Stack JavaScript completo
+  (React, Node.js, Express, MongoDB) certificado en Full Stack Open.
+}
+
+
+% -------------------- EXPERIENCIA PROFESIONAL --------------------
+
+\section{Experiencia Profesional}
+
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Ingeniero de Software Semi Senior}{Junio 2025 -- Julio 2026}
+    {INDRA}{Híbrido}
+  \resumeItemListStart
+
+    \resumeItem{Resolución de bugs y \textbf{despliegue de microservicios}
+    en \textbf{TypeScript}/\textbf{NestJS} y \textbf{Go}, junto a
+    desarrollo en \textbf{React} y \textbf{Python}/Django sobre
+    \textbf{AWS}, para plataformas del \textbf{Coordinador Eléctrico
+    Nacional}.}
+
+    \resumeItem{Participación en \textbf{arquitectura}, \textbf{code
+    review}, \textbf{optimización de queries} y levantamiento de
+    \textbf{requerimientos}.}
+
+    \resumeItem{Implementación de la solución de \textbf{Calidad del Dato}
+    junto al arquitecto de datos: reglas de validación, rutinas de sanidad,
+    \textbf{listeners event saga} (\textbf{Java/Quarkus}, \textbf{Python})
+    e identificación de las secciones del \textbf{frontend} a modificar
+    para atacar la causa raíz. Calidad de datos de \textbf{75\% a 98\%},
+    validada externamente.}
+
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {Ingeniero de Software}{Enero 2024 -- Junio 2025}
+    {Instituto Nacional del Cáncer}{Presencial}
+  \resumeItemListStart
+
+    \resumeItem{Propuesta, diseño y construcción desde cero del
+    \textbf{Integrador}, orquestador concurrente en \textbf{Go} que
+    sincroniza \textbf{4 bases de datos Oracle} de sistemas clínicos
+    aislados mediante \textbf{endpoints HTTP} propios, eliminando la
+    actualización manual de bases productivas. \textbf{Sigue en
+    producción}.}
+
+    \resumeItem{Patrón \textbf{event saga} con \textbf{compensación} ante
+    fallos parciales, \textbf{reintentos con encolado} persistente y estado
+    registrado para \textbf{auditoría}; \textbf{tests unitarios y de
+    integración}. Interoperabilidad \textbf{FHIR} con el \textbf{Servicio
+    de Salud Metropolitano Norte} vía \textbf{Mirth Connect}.}
+
+    \resumeItem{\textbf{CI/CD} con \textbf{Git Hooks} y migración a
+    \textbf{Docker} (despliegue de \textbf{1 hora a 5 minutos});
+    administración de servidores \textbf{Linux/Apache} y mantención de
+    legacy \textbf{PHP 5.7/CodeIgniter 3}, migrado a \textbf{PHP
+    8/Laravel}.}
+
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {Desarrollador de Software Junior}{Julio 2022 -- Diciembre 2023}
+    {Coolebra}{Remoto}
+  \resumeItemListStart
+
+    \resumeItem{Desarrollo del frontend de la plataforma principal en
+    \textbf{React}, incluyendo la \textbf{visualización de la evolución de
+    precios} que permitía a compradores y comercios verificar si los
+    descuentos publicados estaban inflados. Integración de \textbf{Mercado
+    Pago} para el cobro de suscripciones.}
+
+    \resumeItem{Construcción desde cero de un \textbf{ETL} en
+    \textbf{Python}, \textbf{sin dependencias externas}, que auditaba
+    \textbf{200 mil productos diarios} desde \textbf{PostgreSQL} hacia
+    \textbf{OpenSearch} con historial de precios, en \textbf{2 horas} sobre
+    \textbf{5 máquinas} (\textbf{Terraform}).}
+
+    \resumeItem{Escalamiento del \textbf{scraping de más de 30 retailers}
+    (BeautifulSoup, Selenium) con \textbf{ingeniería inversa} de sus
+    sistemas sobre \textbf{3 instancias EC2}, y despliegue de
+    \textbf{OpenSearch} como servicio.}
+
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {Tutor de Programación Orientada a Objetos III y Bases de Datos}
+    {Noviembre 2021}
+    {INACAP}{Presencial}
+  \resumeItemListStart
+
+    \resumeItem{Docencia en herencia y modelado orientado a objetos en
+    \textbf{Python} y \textbf{bases de datos relacionales}.}
+
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+% -------------------- PROYECTO ACTUAL --------------------
+
+\section{Proyecto Actual}
+
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Petfi.io} $|$ Plataforma social de rescate y adopción $|$
+    Proyecto colaborativo}
+    {Marzo 2026 -- Presente}
+  \resumeItemListStart
+
+    \resumeItem{Plataforma de rescate y adopción con más de \textbf{11 mil
+    usuarios activos}. Propuesta e implementación de funcionalidades en
+    \textbf{Flutter} sobre \textbf{Firebase}/\textbf{Firestore}, con
+    \textbf{Spec Driven Development} asistido por IA.}
+
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+% -------------------- EDUCACIÓN Y CERTIFICACIONES --------------------
+
+\section{Educación y Certificaciones}
+
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{INACAP} $|$ Ingeniería en Informática}
+    {2019 -- 2022}
+
+  \resumeProjectHeading
+    {\textbf{University of Helsinki} $|$ Full Stack Open Certification
+    (React, Node.js, Express, MongoDB)}
+    {2024}
+
+  \resumeProjectHeading
+    {\textbf{Oracle} $|$ Oracle Cloud Infrastructure Certified Foundations
+    Associate}
+    {2026}
+
+\resumeSubHeadingListEnd
+
+
+% -------------------- TECNOLOGÍAS --------------------
+
+\section{Tecnologías}
+
+\small{
+  \textbf{Lenguajes}: JavaScript, TypeScript, Go, Python, SQL, PHP, Dart \\
+  \textbf{Frontend}: React \\
+  \textbf{Backend}: Node.js/NestJS, Go/Gin, Django, FastAPI, Laravel \\
+  \textbf{Bases de Datos}: PostgreSQL, Oracle/PL-SQL, MongoDB, Firestore,
+  OpenSearch \\
+  \textbf{DevOps y Arquitectura}: AWS, Docker, Terraform, CI/CD, Linux,
+  Microservicios, ETL, Event Saga, FHIR
+}
+
+
+\end{document}
