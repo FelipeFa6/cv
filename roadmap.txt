@@ -1,0 +1,121 @@
+PLAN DE BÚSQUEDA DE TRABAJO
+Felipe Farias Escobar
+agosto 2026
+
+
+ANTES DE EMPEZAR
+================
+- [x] CV "Go"
+- [ ] CV "Fullstack JavaScript"
+- [ ] Redactar a cada version del CV de por que me interesa.
+
+
+BARRIDO INICIAL
+===============
+3 a 4 horas, un fin de semana, una vez.
+
+- Recorrer el stock completo de Get on Board, Programación
+- Marcar todo lo que calce, sin postular todavía
+- Postular en bloque, alternando las dos versiones del CV
+- Meta: 25 a 35 postulaciones
+
+Después empieza la semana.
+
+
+SEMANA
+======
+Meta: 10 a 14 postulaciones.
+
+
+LUNES - 60 minutos
+- 15 min: Get on Board, avisos del viernes al domingo
+- 30 min: Chiletrabajos, Laborum, Trabajando.com
+- 15 min: postular a lo marcado
+
+
+MARTES - 45 minutos
+- 10 min: alertas de LinkedIn
+- 25 min: postular a 2 o 3
+- 10 min: quién publicó vacante donde hay contacto conocido
+
+
+MIÉRCOLES - 60 minutos
+- 30 min: careers pages de las empresas de la lista
+- 30 min: paneles de las consultoras de la lista
+
+
+JUEVES - 45 minutos
+- 10 min: alertas de Get on Board y LinkedIn
+- 25 min: postular a 2 o 3
+- 10 min: escribir a procesos con más de 7 días sin respuesta
+
+
+VIERNES - 45 minutos
+- 30 min: escribir a una persona concreta. Ex-compañeros de
+  INDRA, Instituto Nacional del Cáncer, Coolebra
+- 15 min: ajustar la lista de empresas
+
+Es el bloque de mayor conversión de la semana.
+
+
+SÁBADO Y DOMINGO
+Nada, salvo entrevistas agendadas.
+
+
+SI NO HAY NADA QUE POSTULAR
+===========================
+Habrá días en cero. El bloque no se gasta bajando el estándar.
+Se reinvierte, en este orden:
+
+- Escribir a alguien de la red
+- Revisar un panel directo de la lista
+- Estudio
+
+
+PANELES DEL MIÉRCOLES
+=====================
+Registrarse una vez en cada consultora entra a un pipeline que
+se renueva solo.
+
+Consultoras:
+- BC Tecnología, Niuro, 2BRAINS, Improving
+- Factor IT, Agilistik, 3IT, 23people
+
+Producto y corporativo:
+- Checkr, NeuralWorks, Unholster, GeoVictoria
+- ProntoPaga, Cumplo, BICE VIDA, Magnet
+- TIMINING, Healthatom, Rankmi, Lemontech
+- ComunidadFeliz, Buk, Fintual, Xepelin, Betterfly
+- Coordinador Eléctrico Nacional
+
+- Healthatom cruza con el Instituto Nacional del Cáncer
+- El Coordinador Eléctrico Nacional se conoce desde INDRA
+- Buk, Fintual, Xepelin y Betterfly solo publican en su panel
+
+
+ESTUDIO
+=======
+45 minutos diarios, después de postular. En orden de retorno.
+
+1. TypeScript y NestJS, 4 semanas. Mayor brecha frente a la
+   mayor demanda del país. Entregable: CRUD con NestJS,
+   PostgreSQL y tests
+2. Arquitectura hexagonal, 1 semana. Entregable: refactor del
+   INTEGRADOR separando la saga del acceso a Oracle
+3. Go, continuo. Contexts, errores envueltos, testing con
+   tablas, un worker con canales
+4. Petfi.io, no se pausa
+
+Kubernetes, Kafka y gRPC: solo leerlos para no quedar mudo.
+
+
+REGLAS
+======
+- Go es desempate, no filtro. Filtrar por Go deja 2 avisos al
+  mes en todo Chile
+- El Senior al lado no se negocia. Es la razón del cambio
+- Renta: dar el rango completo y "conversable según el paquete".
+  No usar el sueldo de INDRA como referencia
+- No leer avisos fuera del bloque de escaneo
+- A las 20 postulaciones, revisar: bajo 8% de respuesta el
+  problema es el CV, no el volumen

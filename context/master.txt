@@ -11,7 +11,7 @@ de otros documentos.
 
 Dato nuevo o contradicción: se corrige aquí primero.
 
-Tecnologías objetivo: Go, JavaScript, Python.
+Tecnologías objetivo: TypeScript/JavaScript, Go, Python.
 
 
 REGLAS DE ESTE DOCUMENTO
@@ -69,8 +69,8 @@ OBJETIVO
 Cargo: Ingeniero de Software Semi Senior.
 
 Busca ganar seniority y especializarse en sus tecnologías
-objetivo. Go es el eje; JavaScript es la segunda especialización
-que quiere profundizar.
+objetivo. TypeScript/JavaScript es el eje; Go es el
+diferenciador y se mantiene activo.
 
 Prioriza equipos con un perfil Senior al lado: viene de definir
 arquitectura por su cuenta y busca contraste de criterio, code
@@ -106,13 +106,20 @@ Calidad del dato (agosto - diciembre 2025). Scrum:
 
 Tickets (continuo):
 - Mantenimiento de microservicios en Go
-- Desarrollo con Django, React y AWS
-- Trabajo puntual sobre GCP en el Coordinador Eléctrico Nacional.
-  Experiencia mínima (falta confirmar qué servicios)
+- Microservicios en NestJS con TypeScript: corrección de bugs,
+  endpoints y funcionalidades nuevas, configuración y ejecución
+  del despliegue. No creación de servicios desde cero
+- Frontend en React con TypeScript: corrección de bugs de
+  interfaz, vistas y componentes nuevos, integración con APIs,
+  refactor y migración de código existente
+- Desarrollo con Django y AWS
+- Trabajo puntual sobre GCP en el Coordinador Eléctrico Nacional:
+  Compute Engine. Acceso por SSH a máquinas y despliegues
+  puntuales de microservicios junto al equipo de QA
 - Optimización de queries y extracción bulk
 - Reescritura e implementación de mejoras
 
-Stack real: Python > Go > JavaScript
+Stack real: Python > TypeScript > Go
 Transversal: code review, arquitectura, requerimientos
 
 
@@ -182,7 +189,6 @@ ETL en Python, desde cero:
 
 OpenSearch:
 - Despliegue e implementación como servicio
-- API calls para visualización
 
 Scraping:
 - Más de 30 retailers, BeautifulSoup y Selenium
@@ -193,6 +199,13 @@ Scraping:
 
 Frontend y negocio:
 - React en página principal, Chart.js
+- Actualización completa de la landing page
+- Sección de productos con descuento y variación de precios,
+  con búsquedas y consultas contra OpenSearch
+- Visualización de evolución de precios, construida por él:
+  permitía a compradores y comercios verificar si un descuento
+  publicado estaba inflado
+- Panel de descuentos por tarjetas
 - Módulo de ahorro en bencina
 - Mercado Pago para suscripciones, DynamoDB de almacenamiento
 
@@ -220,11 +233,17 @@ Rescate, adopción y hogar temporal en Chile. Gratis para
 fundaciones y adoptantes. Más de 11.000 usuarios activos.
 
 - Propuesta e implementación de funcionalidades
-- Mobile con Flutter
-- Backend Firebase, base de datos Firestore
+- Flutter Web principalmente, mobile en menor medida
+- Panel de administración y sistema de roles: SuperAdmin,
+  Admin, Moderador y Soporte
+- Backend Firebase: Firestore, Authentication, Cloud Storage,
+  Cloud Messaging y Hosting. No usa Cloud Functions
+- Reglas de seguridad e índices compuestos de Firestore
+- Desarrollo de features dentro de una Clean Architecture
+  feature-first ya definida en el proyecto
+- Scripts de automatización en Node.js: IDs de documentos en
+  Firestore, creación de super admin, análisis de registros
 - Spec Driven Development con Claude
-  (falta confirmar si usa Cloud Functions, Cloud Storage,
-  Authentication o reglas de seguridad de Firestore)
 
 Único respaldo de Firestore y de IA en el ciclo de desarrollo.
 Mayor experiencia en Google Cloud del perfil; la de INDRA es
@@ -235,26 +254,29 @@ EDUCACIÓN Y CERTIFICACIONES
 ===========================
 
 INACAP - Ingeniería en Informática (no "en Computación")
-Egreso 2022. Título entregado marzo 2023.
+2019 - 2022. Egreso 2022. Título entregado marzo 2023.
 
 Universidad de Helsinki - Full Stack Open
-Formación, no experiencia laboral. React, Express, Node.js,
-MongoDB.
-(falta confirmar qué módulos se certificaron)
+2024. Formación, no experiencia laboral. Certificado del curso
+principal, partes 0 a 7: React, Redux, Node.js, Express,
+MongoDB. Sin módulos opcionales.
 
 Oracle Cloud Infrastructure 2025 Certified Foundations Associate
-Servicios core de OCI. Válida hasta el 30 de mayo de 2028.
+Servicios core de OCI. Obtenida en 2026; el "2025" es parte del
+nombre oficial de la certificación, no el año de examen. Válida
+hasta el 30 de mayo de 2028.
 
 
 TECNOLOGÍAS
 ===========
 
 Lenguajes:
-- Go, Python, JavaScript, SQL (PL/SQL y estándar), PHP, Dart
+- Go, Python, JavaScript, TypeScript, SQL (PL/SQL y estándar),
+  PHP, Dart
 
 Frameworks:
-- Gin, FastAPI, Django, Express, Laravel, React, Flutter,
-  Chart.js
+- Gin, NestJS, FastAPI, Django, Express, Laravel, React,
+  Flutter, Chart.js
 
 Bases de datos:
 - Oracle/PL-SQL, PostgreSQL
@@ -262,7 +284,8 @@ Bases de datos:
 - OpenSearch/Elasticsearch
 
 Cloud e infraestructura:
-- AWS (EC2), GCP (Firebase/Firestore)
+- AWS (EC2), GCP (Firebase: Firestore, Authentication,
+  Cloud Storage, Cloud Messaging, Hosting)
 - Docker, Terraform, CI/CD con Git Hooks, Linux
 
 Testing:
@@ -288,11 +311,13 @@ LÍMITES DEL PERFIL
 ==================
 Lo que NO se maneja. No afirmar nada de esta lista.
 
-- Arquitectura hexagonal: no aplicada. Se conoce el concepto, no
-  hay implementación propia
-- Node.js y Express: solo Full Stack Open, nunca producción
-- Redux: solo temario del Full Stack Open
+- Arquitectura hexagonal: no aplicada. La Clean Architecture de
+  Petfi.io es heredada, no es diseño propio
+- Express: solo Full Stack Open, nunca producción. Node.js sí,
+  en producción vía NestJS en INDRA
+- Redux: ejercicios del Full Stack Open, sin uso en producción
 - Kubernetes: no. Docker sí, en producción
+- Cloud Functions: no. Petfi.io no las usa
 - Cloud Run y Pub/Sub: se conocen los patrones de integración
   asíncrona, no los productos
 - gRPC, Kafka, RabbitMQ, NATS, Prometheus, Grafana: sin
@@ -301,9 +326,13 @@ Lo que NO se maneja. No afirmar nada de esta lista.
 - MySQL: sin experiencia real
 
 Sin confirmar, preguntar antes de afirmar:
-- Programación funcional: posible respaldo en el ETL de Coolebra
-- OAuth y Claims: posible respaldo si Petfi.io usa Firebase
-  Authentication
+- Programación funcional: no afirmar. En el ETL de Coolebra usó
+  map, filter y comprehensions, sin diseño funcional explícito
+  ni criterio de pureza o inmutabilidad
+- OAuth y Claims: Petfi.io usa Firebase Authentication con
+  sistema de roles, pero no se sabe si son custom claims o
+  documentos en Firestore (falta confirmar en el repositorio).
+  No afirmar Claims
 
 
 REMOTO INTERNACIONAL (IDEA A FUTURO)
@@ -312,7 +341,8 @@ Sin decisión tomada. Anotado para cuando corresponda.
 
 Motivo: la renta actual ya está en el techo de la banda semi
 senior en Chile. El siguiente salto real no es de banda, es de
-moneda. Inglés C1 y Go son las dos palancas.
+moneda. Inglés C1 y TypeScript son las dos palancas; Go es el
+diferenciador.
 
 Plataformas con filtro riguroso y contratos largos:
 - Turing, Andela, Toptal, Lemon.io, Arc.dev

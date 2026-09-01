@@ -92,9 +92,10 @@
 \section{Professional Summary}
 
 \small{
-  Software Engineer with 4 years of experience building backend systems from
-  scratch in \textbf{Go} and \textbf{Python}, with production solutions in the
-  healthcare and energy sectors.
+  Software Engineer with 4 years of full stack experience, working in
+  production with \textbf{TypeScript} across \textbf{React} and
+  \textbf{NestJS}, as well as \textbf{Go} and \textbf{Python}, in the
+  healthcare, energy and retail sectors.
 }
 
 
@@ -109,17 +110,23 @@
     {INDRA}{Hybrid}
   \resumeItemListStart
 
-    \resumeItem{Maintenance of \textbf{Go} microservices and tickets across a
-    varied stack (\textbf{Python}/Django, \textbf{TypeScript}/NestJS and
-    React, \textbf{AWS}), contributing to \textbf{architecture}, \textbf{code
-    review} and query optimization. Microservice deployments on \textbf{GCP}
-    (Compute Engine) with machine administration over SSH.}
+    \resumeItem{Front-end development in \textbf{React} with
+    \textbf{TypeScript} for platforms of the \textbf{Coordinador El\'ectrico
+    Nacional} (Chile's national grid operator): new views and components, API
+    integration, refactoring and migration of existing code, and UI bug
+    fixing.}
 
-    \resumeItem{Implemented the \textbf{Data Quality} solution alongside the
-    data architect: validation rules, verification routines and \textbf{event
-    saga} listeners (Java/Quarkus, Python). Data quality from \textbf{75\% to
-    98\%} at the \textbf{Coordinador El\'ectrico Nacional} (Chile's national
-    grid operator), externally validated.}
+    \resumeItem{Development on \textbf{NestJS} microservices with TypeScript:
+    new endpoints and features, bug fixing and deployment execution.
+    Maintenance of \textbf{Go} microservices, development with
+    \textbf{Django} on \textbf{AWS} and deployments on \textbf{GCP} (Compute
+    Engine).}
+
+    \resumeItem{Implemented the Data Quality solution alongside the data
+    architect: validation rules and \textbf{event saga} listeners
+    (Java/Quarkus, Python). Data quality from \textbf{75\% to 98\%},
+    externally validated. Contributed to architecture, \textbf{code review}
+    and query optimization.}
 
   \resumeItemListEnd
 
@@ -130,24 +137,14 @@
 
     \resumeItem{Proposed, designed and built from scratch the
     \textbf{Integrador}, a concurrent orchestrator in \textbf{Go} that
-    synchronizes \textbf{4 Oracle databases} of isolated clinical systems,
-    processing requests from an \textbf{external vendor's API} as they arrive
-    through its own \textbf{Gin} HTTP endpoints. \textbf{Still in production}.}
+    synchronizes \textbf{4 Oracle databases} of isolated clinical systems
+    through its own HTTP endpoints, using the \textbf{event saga} pattern with
+    compensation on partial failures and persistent retries. \textbf{Still in
+    production}.}
 
-    \resumeItem{\textbf{Event saga} pattern with \textbf{compensation} on
-    partial failures, rolling back databases already updated;
-    \textbf{retries with queueing} persisted in the database, and per-saga
-    state recorded for \textbf{auditing}. Concurrency with
-    \textbf{goroutines}; \textbf{unit and integration tests} with
-    \textbf{testify}.}
-
-    \resumeItem{Enabled \textbf{FHIR} interoperability with the North
-    Metropolitan Health Service via \textbf{Mirth Connect}, eliminating manual
-    data updates in production.}
-
-    \resumeItem{\textbf{CI/CD} with \textbf{Git Hooks} and migration to
-    \textbf{Docker} (deployment from \textbf{1 hour to 5 minutes});
-    \textbf{Linux/Apache} administration and legacy \textbf{PHP
+    \resumeItem{\textbf{FHIR} interoperability via \textbf{Mirth Connect}.
+    \textbf{CI/CD} with Git Hooks and migration to \textbf{Docker}
+    (deployment from \textbf{1 hour to 5 minutes}); legacy \textbf{PHP
     5.7/CodeIgniter 3} migrated to \textbf{PHP 8/Laravel}.}
 
   \resumeItemListEnd
@@ -157,19 +154,18 @@
     {Coolebra}{Remote}
   \resumeItemListStart
 
-    \resumeItem{Built from scratch an \textbf{ETL} in \textbf{Python},
-    \textbf{with no external dependencies}, auditing \textbf{200,000 products
-    daily} from \textbf{PostgreSQL} into \textbf{OpenSearch} with price
-    history, in \textbf{2 hours} across \textbf{5 machines}
-    (\textbf{Terraform}).}
+    \resumeItem{Full rebuild of the landing page in \textbf{React}: a
+    discounted-products section with price variation resolving searches
+    against \textbf{OpenSearch}, a card-discounts panel, and a price-history
+    visualization (\textbf{Chart.js}) that let users verify whether an
+    advertised discount had been inflated. \textbf{Mercado Pago} integration
+    for subscriptions.}
 
-    \resumeItem{Scaled \textbf{scraping of 30+ retailers} (BeautifulSoup,
-    Selenium) using \textbf{reverse engineering} across \textbf{3 EC2
-    instances}, and deployed OpenSearch as a service.}
-
-    \resumeItem{Front-end in \textbf{React}: landing page and products section
-    with searches against OpenSearch; \textbf{Mercado Pago} for
-    subscriptions.}
+    \resumeItem{Built from scratch an \textbf{ETL} in \textbf{Python} with no
+    external dependencies, auditing \textbf{200,000 products daily} from
+    \textbf{PostgreSQL} into OpenSearch, in \textbf{2 hours} across
+    \textbf{5 machines} (\textbf{Terraform}), and scaled scraping of
+    \textbf{30+ retailers} across \textbf{3 EC2 instances}.}
 
   \resumeItemListEnd
 
@@ -199,9 +195,11 @@
   \resumeItemListStart
 
     \resumeItem{Platform with over \textbf{11,000 active users}. Web
-    application in \textbf{Flutter}, including the admin panel and its role
-    system, on \textbf{Firebase} (Firestore, Auth, Storage, Messaging,
-    Hosting) with security rules and composite indexes.}
+    application in \textbf{Flutter Web}, including the admin panel and its
+    \textbf{role system}, on \textbf{Firebase} (Firestore, Authentication,
+    Storage, Messaging, Hosting) with security rules and composite indexes.
+    Scripts in \textbf{Node.js} and AI-assisted \textbf{Spec Driven
+    Development}.}
 
   \resumeItemListEnd
 
@@ -219,7 +217,8 @@
     {2019 -- 2022}
 
   \resumeProjectHeading
-    {\textbf{University of Helsinki} $|$ Full Stack Open, core course}
+    {\textbf{University of Helsinki} $|$ Full Stack Open, core course
+    (React, Redux, Node.js, Express, MongoDB)}
     {2024}
 
   \resumeProjectHeading
@@ -234,13 +233,14 @@
 \section{Technologies}
 
 \small{
-  \textbf{Languages}: Go, Python, TypeScript, JavaScript, SQL \\
-  \textbf{Back-end and Data}: Gin, NestJS, Django, FastAPI, Oracle/PL-SQL,
-  PostgreSQL, OpenSearch, Firestore \\
-  \textbf{DevOps}: AWS (EC2), GCP (Compute Engine, Firebase), Docker,
-  Terraform, CI/CD, Git Hooks, Linux \\
-  \textbf{Patterns}: Event Saga with compensation and retries, goroutines,
-  microservices, ETL, systems integration, FHIR
+  \textbf{Languages}: TypeScript, JavaScript, Go, Python, SQL, PHP, Dart \\
+  \textbf{Front-end}: React, Chart.js, Flutter Web \\
+  \textbf{Back-end}: NestJS, Go/Gin, Django, FastAPI, Laravel \\
+  \textbf{Data and Infrastructure}: PostgreSQL, Oracle/PL-SQL, OpenSearch,
+  Firestore, MongoDB, AWS (EC2), GCP (Firebase, Compute Engine), Docker,
+  Terraform, CI/CD, Linux \\
+  \textbf{Practices}: Microservices, Event Saga, ETL, systems integration,
+  testing, code review, Scrum, Kanban
 }
 
 

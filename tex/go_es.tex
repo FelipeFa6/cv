@@ -93,8 +93,8 @@
 
 \small{
   Ingeniero de Software con 4 años de experiencia construyendo sistemas
-  backend desde cero en Go y Python, con soluciones en producción en los
-  sectores de salud y energía.
+  backend desde cero en \textbf{Go} y \textbf{Python}, con soluciones en
+  producción en los sectores de salud y energía.
 }
 
 
@@ -109,16 +109,18 @@
     {INDRA}{Híbrido}
   \resumeItemListStart
 
-    \resumeItem{Resolución de tickets de alta variabilidad tecnológica
-    (\textbf{Go}, \textbf{Python}/Django, \textbf{JavaScript}/React,
-    \textbf{AWS}), con participación en \textbf{arquitectura},
-    \textbf{code review} y \textbf{requerimientos}.}
+    \resumeItem{Mantenimiento de microservicios en \textbf{Go} y tickets de
+    alta variabilidad tecnológica (\textbf{Python}/Django,
+    \textbf{TypeScript}/NestJS y React, \textbf{AWS}), con participación en
+    \textbf{arquitectura}, \textbf{code review} y optimización de queries.
+    Despliegues de microservicios sobre \textbf{GCP} (Compute Engine) con
+    administración de máquinas por SSH.}
 
     \resumeItem{Implementación de la solución de \textbf{Calidad del Dato}
-    junto al arquitecto de datos: reglas de validación, rutinas de sanidad y
-    \textbf{listeners event saga} (\textbf{Java/Quarkus}, \textbf{Python}).
-    Calidad de datos de \textbf{75\% a 98\%} en el \textbf{Coordinador
-    Eléctrico Nacional}, validada externamente.}
+    junto al arquitecto de datos: reglas de validación, rutinas de
+    verificación y listeners \textbf{event saga} (Java/Quarkus, Python).
+    Calidad de datos de \textbf{75\% a 98\%} en plataformas del
+    \textbf{Coordinador Eléctrico Nacional}, validada externamente.}
 
   \resumeItemListEnd
 
@@ -128,25 +130,27 @@
   \resumeItemListStart
 
     \resumeItem{Propuesta, diseño y construcción desde cero del
-    \textbf{Integrador}, orquestador en \textbf{Go} que sincroniza \textbf{4
-    bases de datos Oracle} de sistemas clínicos aislados, procesando las
-    solicitudes de la \textbf{API de un proveedor externo} a medida que
-    llegan. \textbf{Sigue en producción}.}
+    \textbf{Integrador}, orquestador concurrente en \textbf{Go} que sincroniza
+    \textbf{4 bases de datos Oracle} de sistemas clínicos aislados,
+    procesando las solicitudes de la \textbf{API de un proveedor externo} a
+    medida que llegan mediante endpoints HTTP propios con \textbf{Gin}.
+    \textbf{Sigue en producción}.}
 
-    \resumeItem{Implementación del patrón \textbf{event saga} con
-    \textbf{compensación} ante fallos parciales, \textbf{reintentos con
-    encolado} y registro del estado de cada saga en base de datos para
-    \textbf{revisión y auditoría}. \textbf{Tests unitarios y de integración}
-    con \textbf{testify}.}
+    \resumeItem{Patrón \textbf{event saga} con \textbf{compensación} ante
+    fallos parciales, revirtiendo las bases ya actualizadas;
+    \textbf{reintentos con encolado} persistente en base de datos y registro
+    del estado de cada saga para \textbf{auditoría}. Concurrencia con
+    \textbf{goroutines}; \textbf{tests unitarios y de integración} con
+    \textbf{testify}.}
 
     \resumeItem{Habilitación de interoperabilidad \textbf{FHIR} con el
-    \textbf{Servicio de Salud Metropolitano Norte} vía \textbf{Mirth Connect},
+    Servicio de Salud Metropolitano Norte vía \textbf{Mirth Connect},
     eliminando la actualización manual de datos en producción.}
 
     \resumeItem{\textbf{CI/CD} con \textbf{Git Hooks} y migración a
     \textbf{Docker} (despliegue de \textbf{1 hora a 5 minutos});
-    administración de servidores \textbf{Linux/Apache} y mantención de legacy
-    \textbf{PHP 5.7/CodeIgniter 3}, migrado a \textbf{PHP 8/Laravel}.}
+    administración de servidores \textbf{Linux/Apache} y legacy \textbf{PHP
+    5.7/CodeIgniter 3} migrado a \textbf{PHP 8/Laravel}.}
 
   \resumeItemListEnd
 
@@ -156,26 +160,29 @@
   \resumeItemListStart
 
     \resumeItem{Construcción desde cero de un \textbf{ETL} en \textbf{Python},
-    \textbf{sin dependencias externas}, que indexaba \textbf{200 mil productos
+    \textbf{sin dependencias externas}, que auditaba \textbf{200 mil productos
     diarios} desde \textbf{PostgreSQL} hacia \textbf{OpenSearch} con historial
     de precios, en \textbf{2 horas} sobre \textbf{5 máquinas}
     (\textbf{Terraform}).}
 
-    \resumeItem{Escalamiento del \textbf{scraping de 30+ retailers}
-    (BeautifulSoup, Selenium) con \textbf{ingeniería inversa} en \textbf{3
-    instancias EC2}; visualización del dato en \textbf{React} e integración de
-    \textbf{Mercado Pago} para suscripciones.}
+    \resumeItem{Escalamiento del \textbf{scraping de más de 30 retailers}
+    (BeautifulSoup, Selenium) con \textbf{ingeniería inversa} sobre
+    \textbf{3 instancias EC2}, y despliegue de OpenSearch como servicio.}
+
+    \resumeItem{Frontend en \textbf{React}: landing page y sección de
+    productos con búsquedas contra OpenSearch; \textbf{Mercado Pago} para
+    suscripciones.}
 
   \resumeItemListEnd
 
   \resumeSubheading
     {Tutor de Programación Orientada a Objetos III y Bases de Datos}
     {Noviembre 2021}
-    {INACAP}{Remoto}
+    {INACAP}{Presencial}
   \resumeItemListStart
 
     \resumeItem{Docencia en herencia y modelado orientado a objetos en
-    \textbf{Python} y \textbf{bases de datos relacionales}.}
+    \textbf{Python} y bases de datos relacionales.}
 
   \resumeItemListEnd
 
@@ -189,14 +196,15 @@
 \resumeSubHeadingListStart
 
   \resumeProjectHeading
-    {\textbf{Petfi.io} $|$ Plataforma social de rescate y adopción $|$
-    Proyecto colaborativo}
+    {\textbf{Petfi.io} $|$ Plataforma social de rescate y adopción}
     {Marzo 2026 -- Presente}
   \resumeItemListStart
 
-    \resumeItem{Plataforma de rescate y adopción con más de \textbf{11 mil
-    usuarios activos}. Propuesta e implementación de funcionalidades en
-    \textbf{Flutter} con \textbf{Spec Driven Development}.}
+    \resumeItem{Plataforma con más de \textbf{11 mil usuarios activos}.
+    Aplicación web en \textbf{Flutter}, incluido el panel de administración y
+    su sistema de roles, sobre \textbf{Firebase} (Firestore, Authentication,
+    Storage, Messaging, Hosting) con reglas de seguridad e índices
+    compuestos.}
 
   \resumeItemListEnd
 
@@ -210,16 +218,15 @@
 \resumeSubHeadingListStart
 
   \resumeProjectHeading
-    {\textbf{INACAP} $|$ Ingeniería en Informática}
+    {\textbf{INACAP} $|$ Ingeniería en Informática $|$ Titulado 2023}
     {2019 -- 2022}
 
   \resumeProjectHeading
-    {\textbf{University of Helsinki} $|$ Full Stack Open Certification}
+    {\textbf{University of Helsinki} $|$ Full Stack Open, curso principal}
     {2024}
 
   \resumeProjectHeading
-    {\textbf{Oracle} $|$ Oracle Cloud Infrastructure Certified Foundations
-    Associate}
+    {\textbf{Oracle} $|$ OCI 2025 Certified Foundations Associate}
     {2026}
 
 \resumeSubHeadingListEnd
@@ -230,9 +237,13 @@
 \section{Tecnologías}
 
 \small{
-  \textbf{Lenguajes}: Go, Python, JavaScript \\
-  \textbf{Bases de Datos}: Oracle/PL-SQL, PostgreSQL, MongoDB, OpenSearch \\
-  \textbf{DevOps}: AWS (EC2), Docker, Terraform, CI/CD, Git Hooks, Linux
+  \textbf{Lenguajes}: Go, Python, TypeScript, JavaScript, SQL \\
+  \textbf{Backend y Datos}: Gin, NestJS, Django, FastAPI, Oracle/PL-SQL,
+  PostgreSQL, OpenSearch, Firestore \\
+  \textbf{DevOps}: AWS (EC2), GCP (Compute Engine, Firebase), Docker,
+  Terraform, CI/CD, Git Hooks, Linux \\
+  \textbf{Patrones}: Event Saga con compensación y reintentos, goroutines,
+  microservicios, ETL, integración de sistemas, FHIR
 }
 
 
