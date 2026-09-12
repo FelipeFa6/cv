@@ -1,6 +1,6 @@
 PERFIL PROFESIONAL - DOCUMENTO MAESTRO
 Felipe Farias Escobar
-Última actualización: agosto 2026
+Última actualización: septiembre 2026
 
 
 ROL DE ESTE ARCHIVO
@@ -29,8 +29,9 @@ R-05. Un dato, una ubicación.
 R-06. Orden fijo de secciones: encabezado, ROL DE ESTE ARCHIVO,
       REGLAS DE ESTE DOCUMENTO, DATOS DE CONTACTO, RESUMEN,
       OBJETIVO, EXPERIENCIA LABORAL, PROYECTO ACTUAL, EDUCACIÓN Y
-      CERTIFICACIONES, TECNOLOGÍAS, LÍMITES DEL PERFIL, REMOTO
-      INTERNACIONAL, REFERENCIAS, CRONOLOGÍA.
+      CERTIFICACIONES, TECNOLOGÍAS, LÍMITES DEL PERFIL, PREGUNTAS
+      DE ENTREVISTA, REMOTO INTERNACIONAL, REFERENCIAS,
+      CRONOLOGÍA.
 R-07. Texto plano. Ancho máximo 72. Títulos en mayúscula
       subrayados con "=" del mismo largo, dos líneas en blanco
       antes. Viñetas con "- ". Sin markdown ni emojis.
@@ -116,6 +117,8 @@ Tickets (continuo):
 - Trabajo puntual sobre GCP en el Coordinador Eléctrico Nacional:
   Compute Engine. Acceso por SSH a máquinas y despliegues
   puntuales de microservicios junto al equipo de QA
+- MongoDB en el Coordinador Eléctrico Nacional: consumo de bases
+  ya existentes, sin diseño de colecciones ni índices
 - Optimización de queries y extracción bulk
 - Reescritura e implementación de mejoras
 
@@ -175,7 +178,7 @@ Remoto. 3 meses de práctica, luego tiempo completo
 Kanban con planning poker
 
 Flujo: scraping, PostgreSQL, ETL, OpenSearch.
-DynamoDB no participa en este flujo: era el modelo de
+MongoDB no participa en este flujo: era el modelo de
 suscripciones.
 
 ETL en Python, desde cero:
@@ -207,7 +210,8 @@ Frontend y negocio:
   publicado estaba inflado
 - Panel de descuentos por tarjetas
 - Módulo de ahorro en bencina
-- Mercado Pago para suscripciones, DynamoDB de almacenamiento
+- Mercado Pago para suscripciones, MongoDB de almacenamiento:
+  diseño de colecciones e índices, escritura de consultas
 
 
 INACAP - Tutor de POO III y Bases de Datos Relacionales
@@ -280,7 +284,7 @@ Frameworks:
 
 Bases de datos:
 - Oracle/PL-SQL, PostgreSQL
-- MongoDB, Firestore, DynamoDB
+- MongoDB, Firestore
 - OpenSearch/Elasticsearch
 
 Cloud e infraestructura:
@@ -333,6 +337,61 @@ Sin confirmar, preguntar antes de afirmar:
   sistema de roles, pero no se sabe si son custom claims o
   documentos en Firestore (falta confirmar en el repositorio).
   No afirmar Claims
+- Tests en Petfi.io: no registrados en este documento (falta
+  confirmar). No afirmar "tests primero" en la respuesta sobre
+  IA hasta confirmarlo. Los tests confirmados son los del
+  Integrador con testify
+- API de búsqueda contra OpenSearch en Coolebra: no está
+  confirmado que él escribiera el endpoint que consumía el
+  frontend (falta confirmar; Django alojaba la app). Decir
+  "búsquedas resueltas contra OpenSearch", no "API que construí"
+
+
+PREGUNTAS DE ENTREVISTA
+=======================
+Respuestas preparadas en septiembre 2026. Solo usan datos de este
+documento. Lo pendiente de confirmar está en LÍMITES DEL PERFIL.
+
+Funcionalidad full stack (frontend, backend, base de datos,
+colas):
+- Ejemplo: evolución de precios en Coolebra. Detecta descuentos
+  inflados en retail
+- Ingesta y base de datos: scrapers Python (BeautifulSoup,
+  Selenium) sobre más de 30 retailers en 3 EC2, hacia PostgreSQL
+- Backend: ETL en Python desde cero, solo librería estándar.
+  200.000 productos diarios, historial de precios, 2 horas sobre
+  5 máquinas (Terraform), hacia OpenSearch, desplegado como
+  servicio
+- Frontend: React. Sección de productos con búsquedas resueltas
+  contra OpenSearch y gráfico de evolución de precios con
+  Chart.js
+- Colas: en Coolebra era batch diario, sin cola de mensajes. El
+  encolado real es el Integrador (Go, Instituto Nacional del
+  Cáncer): saga con reintentos persistidos en tabla de base de
+  datos, compensación y estado auditable. Sigue en producción
+- No mezclar Mercado Pago ni MongoDB: eran el modelo de
+  suscripciones, no este flujo
+- Alternativa para rol TypeScript: Petfi.io (Flutter Web, panel
+  de roles, reglas e índices de Firestore, scripts Node.js). Sin
+  colas ni Cloud Functions
+
+Uso de IA para programar y verificación de calidad:
+- Spec Driven Development: antes de generar código se escribe la
+  especificación de la feature (qué hace, casos borde, criterios
+  de aceptación). La IA implementa contra la spec, no contra un
+  prompt suelto
+- Aplicado en Petfi.io con Claude, dentro de la Clean
+  Architecture feature-first ya definida en el proyecto, para que
+  el código generado respete la estructura
+- Verificación en tres capas: tests definidos junto con la spec,
+  revisión feature por feature contra su spec antes de integrar,
+  y code review propio como si el código fuera de otro
+  desarrollador
+- Cierre: la IA acelera la implementación; la spec y los tests
+  definen qué es correcto
+- Si no se confirman tests en Petfi.io, reemplazar "tests" por
+  "criterios de aceptación en la spec" y citar los tests con
+  testify del Integrador como referencia real de testing
 
 
 REMOTO INTERNACIONAL (IDEA A FUTURO)

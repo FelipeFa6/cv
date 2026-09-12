@@ -3,13 +3,6 @@ Felipe Farias Escobar
 agosto 2026
 
 
-ANTES DE EMPEZAR
-================
-- [x] CV "Go"
-- [ ] CV "Fullstack JavaScript"
-- [ ] Redactar a cada version del CV de por que me interesa.
-
-
 BARRIDO INICIAL
 ===============
 3 a 4 horas, un fin de semana, una vez.

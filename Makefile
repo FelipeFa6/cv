@@ -1,7 +1,7 @@
 .PHONY: all img clean clean-aux help
 
 # Versiones disponibles: <stack>_<idioma>
-VERSIONS := go_es go_en js_es js_en
+VERSIONS := go_es go_en js_es js_en py_es
 
 TEX_DIR := tex
 OUT_DIR := pdf
