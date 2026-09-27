@@ -110,7 +110,7 @@ Tickets (continuo):
 - Microservicios en NestJS con TypeScript: corrección de bugs,
   endpoints y funcionalidades nuevas, configuración y ejecución
   del despliegue. No creación de servicios desde cero
-- Frontend en React con TypeScript: corrección de bugs de
+- Frontend en NextJS con TypeScript: corrección de bugs de
   interfaz, vistas y componentes nuevos, integración con APIs,
   refactor y migración de código existente
 - Desarrollo con Django y AWS
@@ -201,7 +201,7 @@ Scraping:
 - Primer contacto con infraestructura como código
 
 Frontend y negocio:
-- React en página principal, Chart.js
+- NextJS en página principal, Chart.js
 - Actualización completa de la landing page
 - Sección de productos con descuento y variación de precios,
   con búsquedas y consultas contra OpenSearch
@@ -262,7 +262,7 @@ INACAP - Ingeniería en Informática (no "en Computación")
 
 Universidad de Helsinki - Full Stack Open
 2024. Formación, no experiencia laboral. Certificado del curso
-principal, partes 0 a 7: React, Redux, Node.js, Express,
+principal, partes 0 a 7: NextJS, Redux, Node.js, Express,
 MongoDB. Sin módulos opcionales.
 
 Oracle Cloud Infrastructure 2025 Certified Foundations Associate
@@ -279,7 +279,7 @@ Lenguajes:
   PHP, Dart
 
 Frameworks:
-- Gin, NestJS, FastAPI, Django, Express, Laravel, React,
+- Gin, NestJS, FastAPI, Django, Express, Laravel, NextJS,
   Flutter, Chart.js
 
 Bases de datos:
@@ -362,7 +362,7 @@ colas):
   200.000 productos diarios, historial de precios, 2 horas sobre
   5 máquinas (Terraform), hacia OpenSearch, desplegado como
   servicio
-- Frontend: React. Sección de productos con búsquedas resueltas
+- Frontend: NextJS. Sección de productos con búsquedas resueltas
   contra OpenSearch y gráfico de evolución de precios con
   Chart.js
 - Colas: en Coolebra era batch diario, sin cola de mensajes. El
