@@ -1,7 +1,7 @@
 .PHONY: all img clean clean-aux help
 
 # Versiones disponibles: <stack>_<idioma>
-VERSIONS := go_es go_en js_es js_en py_es
+VERSIONS := js_es go_es
 
 TEX_DIR := tex
 OUT_DIR := pdf
@@ -18,8 +18,11 @@ all:
 
 $(OUT_DIR)/%.pdf: $(TEX_DIR)/%.tex | $(OUT_DIR)
 	@echo ">>> Compilando $<"
-	@cd $(TEX_DIR) && $(PDFLATEX) $(PDFLATEX_OPTS) -output-directory=../$(OUT_DIR) $(notdir $<) >/dev/null
-	@cd $(TEX_DIR) && $(PDFLATEX) $(PDFLATEX_OPTS) -output-directory=../$(OUT_DIR) $(notdir $<) >/dev/null
+	@cd $(TEX_DIR) && $(PDFLATEX) $(PDFLATEX_OPTS) -output-directory=../$(OUT_DIR) $(notdir $<) >../$(OUT_DIR)/$*.build.log 2>&1 \
+	  || { echo "!!! Falló $< — últimas líneas del log:"; tail -n 25 ../$(OUT_DIR)/$*.build.log; exit 1; }
+	@cd $(TEX_DIR) && $(PDFLATEX) $(PDFLATEX_OPTS) -output-directory=../$(OUT_DIR) $(notdir $<) >>../$(OUT_DIR)/$*.build.log 2>&1 \
+	  || { echo "!!! Falló $< (2ª pasada) — últimas líneas del log:"; tail -n 25 ../$(OUT_DIR)/$*.build.log; exit 1; }
+	@rm -f $(OUT_DIR)/$*.build.log
 	@echo ">>> Generado $@"
 
 img: all

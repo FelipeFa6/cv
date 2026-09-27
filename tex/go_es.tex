@@ -1,250 +1,365 @@
 \documentclass[letterpaper,11pt]{article}
-
-% T1: acentos como glifo único (í, no ı+´) y versalitas extraíbles como texto.
-% Sin esto, un ATS o un Ctrl+F por "clínicos" no hace match.
 \usepackage[T1]{fontenc}
 \usepackage[empty]{fullpage}
-\usepackage[spanish]{babel}
+\usepackage{babel}
+\babelprovide[main]{spanish}
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage{tabularx}
 \usepackage{charter}
-
+\usepackage{textcase} % Para \MakeTextUppercase seguro con acentos
 
 % ==================== MÁRGENES ====================
+% Bloque de texto: 0.5in arriba, ~0.45in abajo (margen seguro para imprimir).
+% El alto natural del contenido es ~9.65in, así que el bloque de 10.05in
+% deja ~0.4in de holgura sin estirar el texto.
 
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-0.5in}
-\addtolength{\textheight}{1.3in}
-
+\addtolength{\textheight}{1.05in}
 
 % ==================== FORMATO DE SECCIONES ====================
 
-% Mayúsculas reales en vez de \scshape: Charter no trae versalitas propias,
-% las simula escalando la misma fuente y pdftotext lee el cambio de tamaño
-% como espacio ("E XPERIENCIA"). \MakeUppercase extrae limpio.
 \titleformat{\section}
-  {\vspace{-4pt}\raggedright\large}
-  {}
-  {0em}
-  {\MakeUppercase}
-  [\titlerule \vspace{-5pt}]
-
+{\vspace{-7pt}\raggedright\large}
+{}
+{0em}
+{\MakeTextUppercase}
+[\titlerule \vspace{-6pt}]
 
 % ==================== COMANDOS PROPIOS ====================
-
 \newcommand{\resumeItem}[1]{%
-  \item\small{#1 \vspace{-2pt}}%
+\item{\small #1\vspace{-4pt}}%
 }
 
 \newcommand{\resumeSubheading}[4]{%
-  \vspace{-2pt}\item
-  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & #2 \\
-    \textit{\small#3} & \textit{\small #4} \\
-  \end{tabular*}\vspace{-7pt}%
+        \vspace{-2pt}
+\item
+        \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+                \textbf{#1} & #2 \\
+                \textit{\small #3} & \textit{\small #4} \\
+        \end{tabular*}\vspace{-8pt}%
 }
 
 \newcommand{\resumeProjectHeading}[2]{%
-  \item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    \small#1 & #2 \\
-  \end{tabular*}\vspace{-7pt}%
+\item
+        \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+                {\small #1} & #2 \\
+        \end{tabular*}\vspace{-9pt}%
 }
 
 \newcommand{\resumeSubHeadingListStart}{%
-  \begin{itemize}[leftmargin=0.15in, label={}]%
-}
-\newcommand{\resumeSubHeadingListEnd}{%
-  \end{itemize}\vspace{-3pt}%
+        \begin{itemize}[leftmargin=0.15in, label={}]%
+                }
+                \newcommand{\resumeSubHeadingListEnd}{%
+        \end{itemize}\vspace{-5pt}%
 }
 
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+\newcommand{\resumeItemListStart}{%
+        \begin{itemize}%
+                }
+                \newcommand{\resumeItemListEnd}{%
+        \end{itemize}\vspace{-5pt}%
+}
 
 \raggedright
 \raggedbottom
 \setlength{\tabcolsep}{0in}
 
-
 % ==================== DOCUMENTO ====================
+
+% ==== Language
+% LTeX: language=es
+
+% ==== DICTIONARY IGNORES ====
+
+% --- Términos generales ---
+% LTeX: dictionary+=Agile
+% LTeX: dictionary+=Auth
+% LTeX: dictionary+=Backend
+% LTeX: dictionary+=Code
+% LTeX: dictionary+=Frontend
+% LTeX: dictionary+=Full
+% LTeX: dictionary+=Hosting
+% LTeX: dictionary+=Kanban
+% LTeX: dictionary+=Landing
+% LTeX: dictionary+=Listeners
+% LTeX: dictionary+=Messaging
+% LTeX: dictionary+=Queries
+% LTeX: dictionary+=Retailers
+% LTeX: dictionary+=Review
+% LTeX: dictionary+=Scrum
+% LTeX: dictionary+=Senior
+% LTeX: dictionary+=Stack
+% LTeX: dictionary+=Storage
+% LTeX: dictionary+=Testing
+% LTeX: dictionary+=backend
+% LTeX: dictionary+=endpoints
+% LTeX: dictionary+=refactor
+% LTeX: dictionary+=stacks
+
+% --- Lenguajes ---
+% LTeX: dictionary+=Go
+% LTeX: dictionary+=Java
+% LTeX: dictionary+=JavaScript
+% LTeX: dictionary+=PHP
+% LTeX: dictionary+=PL-SQL
+% LTeX: dictionary+=Python
+% LTeX: dictionary+=SQL
+% LTeX: dictionary+=NoSQL
+% LTeX: dictionary+=TypeScript
+
+% --- Frameworks / Librerías ---
+% LTeX: dictionary+=BeautifulSoup
+% LTeX: dictionary+=Django
+% LTeX: dictionary+=Express
+% LTeX: dictionary+=FastAPI
+% LTeX: dictionary+=Flutter
+% LTeX: dictionary+=Gin
+% LTeX: dictionary+=NestJS
+% LTeX: dictionary+=Node.js
+% LTeX: dictionary+=NodeJS
+% LTeX: dictionary+=Quarkus
+% LTeX: dictionary+=React
+% LTeX: dictionary+=Redux
+% LTeX: dictionary+=Selenium
+% LTeX: dictionary+=testify
+
+% --- Bases de datos ---
+% LTeX: dictionary+=Authentication
+% LTeX: dictionary+=Firebase
+% LTeX: dictionary+=Firestore
+% LTeX: dictionary+=MongoDB
+% LTeX: dictionary+=OpenSearch
+% LTeX: dictionary+=Oracle
+% LTeX: dictionary+=PostgreSQL
+
+% --- Infraestructura / Cloud ---
+% LTeX: dictionary+=Apache
+% LTeX: dictionary+=AWS
+% LTeX: dictionary+=Cloud
+% LTeX: dictionary+=Compute
+% LTeX: dictionary+=Docker
+% LTeX: dictionary+=EC2
+% LTeX: dictionary+=Engine
+% LTeX: dictionary+=ETL
+% LTeX: dictionary+=GCP
+% LTeX: dictionary+=Git
+% LTeX: dictionary+=Hooks
+% LTeX: dictionary+=Linux
+% LTeX: dictionary+=OCI
+% LTeX: dictionary+=SSH
+% LTeX: dictionary+=Terraform
+% LTeX: dictionary+=CI/CD
+
+% --- Estándares / Conceptos ---
+% LTeX: dictionary+=Development
+% LTeX: dictionary+=Driven
+% LTeX: dictionary+=Event
+% LTeX: dictionary+=FHIR
+% LTeX: dictionary+=Infrastructure
+% LTeX: dictionary+=Microservicios
+% LTeX: dictionary+=Saga
+% LTeX: dictionary+=Scraping
+% LTeX: dictionary+=Spec
+% LTeX: dictionary+=goroutines
+
+% --- Empresas / Instituciones / Marcas ---
+% LTeX: dictionary+=Associate
+% LTeX: dictionary+=Certified
+% LTeX: dictionary+=CodeIgniter
+% LTeX: dictionary+=Connect
+% LTeX: dictionary+=Coolebra
+% LTeX: dictionary+=Coordinador
+% LTeX: dictionary+=Eléctrico
+% LTeX: dictionary+=Foundations
+% LTeX: dictionary+=Helsinki
+% LTeX: dictionary+=INACAP
+% LTeX: dictionary+=INDRA
+% LTeX: dictionary+=Indra
+% LTeX: dictionary+=Mercado
+% LTeX: dictionary+=Metropolitano
+% LTeX: dictionary+=Mirth
+% LTeX: dictionary+=Nacional
+% LTeX: dictionary+=Norte
+% LTeX: dictionary+=Open
+% LTeX: dictionary+=Pago
+% LTeX: dictionary+=Petfi.io
+% LTeX: dictionary+=Salud
+% LTeX: dictionary+=Servicio
+% LTeX: dictionary+=University
+
+% === RULES ====
+% LTeX: rules-=UPPERCASE_SENTENCE_START
+% LTeX: rules-=DOUBLE_PUNCTUATION
+% LTeX: rules-=ES_DOUBLE_PUNCTUATION
 
 \begin{document}
 
-
-% -------------------- ENCABEZADO --------------------
-
 \begin{center}
-  \textbf{\Huge Felipe Farias Escobar} \\ \vspace{1pt}
-  \small Ingeniero de Software Semi Senior \\ \vspace{1pt}
-  Santiago, Chile \\
-  \href{mailto:felipe.farias.e1@gmail.com}{felipe.farias.e1@gmail.com} $|$
-  \href{https://www.linkedin.com/in/FelipeFa6/}{Linkedin.com/in/FelipeFa6} $|$
-  \href{https://github.com/FelipeFa6}{Github.com/FelipeFa6}
-\end{center}\vspace{-6pt}
+        \textbf{\Huge Felipe Farias Escobar} \\
+        \vspace{4pt}
+        \small Ingeniero de Software Semi Senior \\ \vspace{1pt}
+        Santiago de Chile, San Miguel \\
 
+        \href{mailto:felipe.farias.e1@gmail.com}{felipe.farias.e1@gmail.com} $|$
+        \href{https://wa.me/56939626293}{+56 9 3962 6293} $|$
+        \href{https://www.linkedin.com/in/FelipeFa6/}{Linkedin.com/in/FelipeFa6}
+        $|$
+        \href{https://github.com/FelipeFa6}{Github.com/FelipeFa6}
+\end{center}
 
-% -------------------- RESUMEN PROFESIONAL --------------------
+\vspace{-18pt}
 
 \section{Resumen Profesional}
 
-\small{
-  Ingeniero de Software con 4 años de experiencia construyendo sistemas
-  backend desde cero en \textbf{Go} y \textbf{Python}, con soluciones en
-  producción en los sectores de salud y energía.
+{\small
+        Ingeniero de Software con 4 años de experiencia construyendo sistemas
+        backend desde cero en \textbf{Go} y \textbf{Python}, con soluciones en
+        producción en los sectores de salud y energía.
 }
-
-
-% -------------------- EXPERIENCIA PROFESIONAL --------------------
 
 \section{Experiencia Profesional}
 
 \resumeSubHeadingListStart
 
-  \resumeSubheading
-    {Ingeniero de Software Semi Senior}{Junio 2025 -- Julio 2026}
-    {INDRA}{Híbrido}
-  \resumeItemListStart
+\resumeSubheading
+{Ingeniero de Software Semi Senior} {junio 2025 -- julio 2026}
+{INDRA - Coordinador Electrico Nacional}{Híbrido}
+\resumeItemListStart
 
-    \resumeItem{Mantenimiento de microservicios en \textbf{Go} y tickets de
-    alta variabilidad tecnológica (\textbf{Python}/Django,
-    \textbf{TypeScript}/NestJS y React, \textbf{AWS}), con participación en
-    \textbf{arquitectura}, \textbf{code review} y optimización de queries.
-    Despliegues de microservicios sobre \textbf{GCP} (Compute Engine) con
-    administración de máquinas por SSH.}
+\resumeItem{
+        Mantenimiento de microservicios en \textbf{Go} y tickets de alta
+        variabilidad tecnológica (Python, TypeScript, React), con arquitectura,
+        code review y optimización de queries sobre \textbf{AWS} y
+        \textbf{GCP}.
+}
 
-    \resumeItem{Implementación de la solución de \textbf{Calidad del Dato}
-    junto al arquitecto de datos: reglas de validación, rutinas de
-    verificación y listeners \textbf{event saga} (Java/Quarkus, Python).
-    Calidad de datos de \textbf{75\% a 98\%} en plataformas del
-    \textbf{Coordinador Eléctrico Nacional}, validada externamente.}
+\resumeItem{
+        Implementación de la solución de \textbf{Calidad del Dato} junto al
+        arquitecto de datos: reglas de validación y listeners \textbf{event
+        saga}. Calidad de datos de \textbf{75\% a 98\%}.
+}
 
-  \resumeItemListEnd
+\resumeItemListEnd
 
-  \resumeSubheading
-    {Ingeniero de Software}{Enero 2024 -- Junio 2025}
-    {Instituto Nacional del Cáncer}{Presencial}
-  \resumeItemListStart
+\resumeSubheading
+{Ingeniero de Software} {Enero 2024 -- junio 2025}
+{Instituto Nacional del Cáncer} {Presencial}
+\resumeItemListStart
 
-    \resumeItem{Propuesta, diseño y construcción desde cero del
-    \textbf{Integrador}, orquestador concurrente en \textbf{Go} que sincroniza
-    \textbf{4 bases de datos Oracle} de sistemas clínicos aislados,
-    procesando las solicitudes de la \textbf{API de un proveedor externo} a
-    medida que llegan mediante endpoints HTTP propios con \textbf{Gin}.
-    \textbf{Sigue en producción}.}
+\resumeItem{
+        Diseño e implementación de un \textbf{orquestador} concurrente en
+        \textbf{Go} que sincroniza en tiempo real \textbf{4 Bases de Datos
+        Oracle} con patrón \textbf{event saga}: \textbf{compensación} y
+        \textbf{reintentos con encolado} persistente. \textbf{Sigue en
+        producción}.
+}
 
-    \resumeItem{Patrón \textbf{event saga} con \textbf{compensación} ante
-    fallos parciales, revirtiendo las bases ya actualizadas;
-    \textbf{reintentos con encolado} persistente en base de datos y registro
-    del estado de cada saga para \textbf{auditoría}. Concurrencia con
-    \textbf{goroutines}; \textbf{tests unitarios y de integración} con
-    \textbf{testify}.}
+\resumeItem{
+        Migración de código legado (PHP 5 / CodeIgniter 3) a contenedores
+        Docker \textbf{(PHP 8 / Laravel)}.
+}
 
-    \resumeItem{Habilitación de interoperabilidad \textbf{FHIR} con el
-    Servicio de Salud Metropolitano Norte vía \textbf{Mirth Connect},
-    eliminando la actualización manual de datos en producción.}
+\resumeItem{
+        Integración de flujo \textbf{CI/CD} de manera local con Git Hooks
+        rebajando tiempos de despliegue.
+}
 
-    \resumeItem{\textbf{CI/CD} con \textbf{Git Hooks} y migración a
-    \textbf{Docker} (despliegue de \textbf{1 hora a 5 minutos});
-    administración de servidores \textbf{Linux/Apache} y legacy \textbf{PHP
-    5.7/CodeIgniter 3} migrado a \textbf{PHP 8/Laravel}.}
+\resumeItemListEnd
 
-  \resumeItemListEnd
+\resumeSubheading
+{Desarrollador de Software Junior}{julio 2022 -- diciembre 2023}
+{Coolebra}{Remoto}
+\resumeItemListStart
 
-  \resumeSubheading
-    {Desarrollador de Software Junior}{Julio 2022 -- Diciembre 2023}
-    {Coolebra}{Remoto}
-  \resumeItemListStart
+\resumeItem{
+        Desarrollo de microservicios en \textbf{Express (Node.js)}
+        para la pasarela de suscripciones con \textbf{Mercado Pago},
+        exponiendo \textbf{API's REST} sobre \textbf{MongoDB}.
+}
 
-    \resumeItem{Construcción desde cero de un \textbf{ETL} en \textbf{Python},
-    \textbf{sin dependencias externas}, que auditaba \textbf{200 mil productos
-    diarios} desde \textbf{PostgreSQL} hacia \textbf{OpenSearch} con historial
-    de precios, en \textbf{2 horas} sobre \textbf{5 máquinas}
-    (\textbf{Terraform}).}
+\resumeItem{
+        Actualización completa de la landing page en \textbf{React}:
+        sección de productos con descuento y variación de precios que resolvía
+        búsquedas contra \textbf{OpenSearch}, panel de descuentos por tarjetas y
+        visualización de evolución de precios.
+}
 
-    \resumeItem{Escalamiento del \textbf{scraping de más de 30 retailers}
-    (BeautifulSoup, Selenium) con \textbf{ingeniería inversa} sobre
-    \textbf{3 instancias EC2}, y despliegue de OpenSearch como servicio.}
+\resumeItem{
+        Desarrollo de un script \textbf{ETL} en \textbf{Python}, sin
+        dependencias externas, para la conversión de \textbf{200.000 productos
+        diarios} desde \textbf{PostgreSQL} hacia \textbf{OpenSearch}, motor de
+        búsqueda \textbf{NoSQL}, con despliegue automatizado mediante
+        \textbf{Terraform}.
+}
 
-    \resumeItem{Frontend en \textbf{React}: landing page y sección de
-    productos con búsquedas contra OpenSearch; \textbf{Mercado Pago} para
-    suscripciones.}
+\resumeItem{
+        Desarrollo de \textbf{web scrapers} con \textbf{Python} para extraer
+        datos de más de 30 retailers mediante \textbf{ingeniería inversa}.
+}
 
-  \resumeItemListEnd
-
-  \resumeSubheading
-    {Tutor de Programación Orientada a Objetos III y Bases de Datos}
-    {Noviembre 2021}
-    {INACAP}{Presencial}
-  \resumeItemListStart
-
-    \resumeItem{Docencia en herencia y modelado orientado a objetos en
-    \textbf{Python} y bases de datos relacionales.}
-
-  \resumeItemListEnd
+\resumeItemListEnd
 
 \resumeSubHeadingListEnd
-
-
-% -------------------- PROYECTO ACTUAL --------------------
 
 \section{Proyecto Actual}
 
 \resumeSubHeadingListStart
 
-  \resumeProjectHeading
-    {\textbf{Petfi.io} $|$ Plataforma social de rescate y adopción}
-    {Marzo 2026 -- Presente}
-  \resumeItemListStart
+\resumeProjectHeading
+{\textbf{Petfi.io} $|$ Plataforma social de rescate y adopción}
+{marzo 2026 -- Presente}
+\resumeItemListStart
 
-    \resumeItem{Plataforma con más de \textbf{11 mil usuarios activos}.
-    Aplicación web en \textbf{Flutter}, incluido el panel de administración y
-    su sistema de roles, sobre \textbf{Firebase} (Firestore, Authentication,
-    Storage, Messaging, Hosting) con reglas de seguridad e índices
-    compuestos.}
+\resumeItem{
+        Plataforma online de adopción de mascotas con más de 11 mil
+        usuarios activos.
+}
 
-  \resumeItemListEnd
+\resumeItemListEnd
 
 \resumeSubHeadingListEnd
-
-
-% -------------------- EDUCACIÓN Y CERTIFICACIONES --------------------
+\vspace{-6pt}
 
 \section{Educación y Certificaciones}
 
-\resumeSubHeadingListStart
+\noindent\textbf{INACAP $|$ Ingeniería en Informática $|$ Titulado 2023}
+\hfill
+\textbf{\small 2019 -- 2022} \\
+{\small Carrera universitaria enfocada en desarrollo de software,
+        bases de datos y
+arquitectura de sistemas.}
+\par\vspace{1pt}
 
-  \resumeProjectHeading
-    {\textbf{INACAP} $|$ Ingeniería en Informática $|$ Titulado 2023}
-    {2019 -- 2022}
+\noindent\textbf{University of Helsinki $|$ Full Stack Open} \hfill
+\textbf{2024} \\
+{\small Curso de: React, Node.js, Express, MongoDB y testing.}
+\par\vspace{1pt}
 
-  \resumeProjectHeading
-    {\textbf{University of Helsinki} $|$ Full Stack Open, curso principal}
-    {2024}
+\noindent\textbf{Oracle $|$ OCI 2025 Certified Foundations Associate} \hfill
+\textbf{2026} \\
+{\small Certificación en fundamentos de Oracle Cloud Infrastructure:
+        cómputo, redes,
+almacenamiento y seguridad.}
 
-  \resumeProjectHeading
-    {\textbf{Oracle} $|$ OCI 2025 Certified Foundations Associate}
-    {2026}
-
-\resumeSubHeadingListEnd
-
-
-% -------------------- TECNOLOGÍAS --------------------
-
+\vspace{-6pt}
 \section{Tecnologías}
-
-\small{
-  \textbf{Lenguajes}: Go, Python, TypeScript, JavaScript, SQL \\
-  \textbf{Backend y Datos}: Gin, NestJS, Django, FastAPI, Oracle/PL-SQL,
-  PostgreSQL, OpenSearch, Firestore \\
-  \textbf{DevOps}: AWS (EC2), GCP (Compute Engine, Firebase), Docker,
-  Terraform, CI/CD, Git Hooks, Linux \\
-  \textbf{Patrones}: Event Saga con compensación y reintentos, goroutines,
-  microservicios, ETL, integración de sistemas, FHIR
+{\small
+        \begin{description}[leftmargin=2.5cm, style=sameline, nosep]
+                \item[\textbf{Lenguajes}] Go, Python, TypeScript,
+                        JavaScript, SQL, PHP
+                \item[\textbf{Frontend}] React
+                \item[\textbf{Backend}] Gin, NestJS, Django, FastAPI
+                \item[\textbf{Datos}] PostgreSQL, Oracle/PL-SQL,
+                        OpenSearch, Firestore, MongoDB
+                \item[\textbf{Prácticas}] Microservicios, Event Saga,
+                        goroutines, ETL, FHIR, Testing, Code Review,
+                        Scrum, Kanban
+        \end{description}
 }
-
 
 \end{document}

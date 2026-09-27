@@ -1,1 +1,12 @@
 entrevistas
+
+# Artefactos de compilación: nunca deben quedar en tex/
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.build.log
+tex/*.pdf
