@@ -16,7 +16,9 @@ all:
 	@$(MAKE) --no-print-directory $(PDFS)
 	@$(MAKE) --no-print-directory clean-aux
 
-$(OUT_DIR)/%.pdf: $(TEX_DIR)/%.tex | $(OUT_DIR)
+COMMON := $(wildcard $(TEX_DIR)/common/*.tex)
+
+$(OUT_DIR)/%.pdf: $(TEX_DIR)/%.tex $(COMMON) | $(OUT_DIR)
 	@echo ">>> Compilando $<"
 	@cd $(TEX_DIR) && $(PDFLATEX) $(PDFLATEX_OPTS) -output-directory=../$(OUT_DIR) $(notdir $<) >../$(OUT_DIR)/$*.build.log 2>&1 \
 	  || { echo "!!! Falló $< — últimas líneas del log:"; tail -n 25 ../$(OUT_DIR)/$*.build.log; exit 1; }

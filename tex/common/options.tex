@@ -1,0 +1,23 @@
+% ==================== MÁRGENES ====================
+% Bloque de texto: 0.5in arriba, ~0.45in abajo (margen seguro para imprimir).
+% El alto natural del contenido es ~9.65in, así que el bloque de 10.05in
+% deja ~0.4in de holgura sin estirar el texto.
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.05in}
+
+% ==================== FORMATO DE SECCIONES ====================
+
+\titleformat{\section}
+{\vspace{-7pt}\raggedright\large}
+{}
+{0em}
+{\MakeTextUppercase}
+[\titlerule \vspace{-6pt}]
+
+\raggedright
+\raggedbottom
+\setlength{\tabcolsep}{0in}
